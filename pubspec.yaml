@@ -29,18 +29,21 @@ dependencies:
   share_plus: 12.0.0 # 分享
   file_picker: 10.3.3 # 文件选择
   webview_flutter: 4.13.0 # WebView
-  ditredi: 2.0.2 # 3D 数据集显示
   vector_math: 2.2.0
   awesome_notifications: 0.10.1 # 本地通知
   bonfire: 3.15.1 # 游戏引擎相关
-  flame: 1.18.0 # 游戏引擎相关
   flutter_screen_lock: 9.2.2+2 # 密码锁
   local_auth: 2.3.0 # 本地认证
   local_auth_android: 1.0.53 # 本地认证
   local_auth_darwin: 1.6.1 # 本地认证
   flutter_tilt: 3.3.2 # 倾斜视差
   remixicon: 1.4.1 # Remixicon
-
+  http: ^1.2.2 #api
+  flutter_dotenv: ^5.1.0 #api
+  flutter_markdown: ^0.7.7+1  # Markdown渲染核心库
+  url_launcher: ^6.2.3       # 处理链接点击跳转
+  confetti: ^0.8.0
+  numberpicker: ^2.1.2
 # https://dart.dev/tools/pub/dependencies#dependency-overrides
 dependency_overrides:
 
@@ -56,15 +59,8 @@ flutter:
   uses-material-design: true
 
   assets:
+    - .env
     - assets/
     - assets/images/
     - assets/images/onboarding/
     - assets/images/woolly/
-    - assets/3d/city/
-    - assets/images/game/mini_fantasy/
-    - assets/images/game/mini_fantasy/tiles/
-    - assets/images/game/mini_game/
-    - assets/images/game/mini_game/tiles/
-    - assets/images/game/mini_game/enemy/orc/
-    - assets/images/game/mini_game/enemy/boss/
-    - assets/images/game/mini_game/player/human/

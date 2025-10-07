@@ -60,12 +60,16 @@
     "home_upgrade_title": "功能更新",
     "home_upgrade_content": "了解最新使用场景",
     "home_upgrade_button": "查看",
-    "home_help_title": "帮助",
-    "home_help_article_title_1": "自我成长",
-    "home_help_article_content_1": "认知和意识过程产生对外界事物的态度...",
-    "home_help_article_title_2": "情绪管理",
-    "home_help_article_content_2": "如何更好地管理自己的情绪...",
-
+    "home_help_title": "功能",
+    "home_help_article_title_1": "心理助手",
+    "home_help_article_content_1": "了解你心情的chat-gpt...",
+    "home_help_article_title_2": "番茄钟",
+    "home_help_article_content_2": "对专注说不定有用...",
+    "home_help_article_title_3": "待办事项",
+    "home_help_article_content_3": "记录并提醒您的截止日期……",
+    "home_help_article_title_4": "深呼吸",
+    "home_help_article_content_4": "科学的深呼吸练习...",
+    
     "mood_title": "心情",
     "mood_add_button": "记录",
     "mood_data_delete_button_title": "确认删除？",
@@ -115,5 +119,312 @@
     "local_notification_dialog_allow_cancel": "取消",
     "local_notification_dialog_allow_confirm": "前往设置",
     "local_notification_schedule_title": "📅 定时计划通知",
-    "local_notification_schedule_body": "每1分钟你将看见此通知"
+    "local_notification_schedule_body": "每1分钟你将看见此通知",
+
+
+
+    "ai_title": "心理助手",
+    "ai_input_hint": "请输入你的问题或消息...",
+    "ai_stop_tooltip": "停止",
+    "ai_sending_text": "AI 正在输入...",
+    "ai_apiKey_missing_title": "API Key 未配置",
+    "ai_apiKey_missing_message": "请在项目根目录创建 .env 并添加 DEEPSEEK_KEY=<your_key>，然后重启应用。",
+    "ai_ok": "知道了",
+
+
+
+    "pomodoro_mode_work_title": "工作模式",
+    "@pomodoro_mode_work_title": {
+    "description": "工作模式下的应用栏标题"
+    },
+
+    "pomodoro_mode_break_title": "休息模式",
+    "@pomodoro_mode_break_title": {
+    "description": "休息模式下的应用栏标题"
+    },
+
+    "pomodoro_completed_label": "已完成的番茄钟",
+    "@pomodoro_completed_label": {
+    "description": "番茄钟完成指示器上方的标签"
+    },
+
+    "pomodoro_snack_work_end": "休息时间结束——回到工作吧！",
+    "@pomodoro_snack_work_end": {
+    "description": "休息结束切换到工作模式时的提示栏文本"
+    },
+
+    "pomodoro_snack_break_end": "工作时间结束——休息一下吧！",
+    "@pomodoro_snack_break_end": {
+    "description": "工作结束切换到休息模式时的提示栏文本"
+    },
+
+    "pomodoro_reset_tooltip": "重置",
+    "@pomodoro_reset_tooltip": {
+    "description": "重置按钮的提示文本"
+    },
+
+    "pomodoro_toggle_tooltip": "切换模式",
+    "@pomodoro_toggle_tooltip": {
+    "description": "用于在工作和休息模式间切换的提示文本"
+    },
+    "todo_app_title": "待办事项应用",
+    "@todo_app_title": {
+        "description": "待办事项应用的标题"
+    },
+    "todo_list_title": "待办事项",
+    "@todo_list_title": {
+        "description": "待办事项列表页面的标题"
+    },
+    "todo_confirm_delete_title": "确认删除",
+    "@todo_confirm_delete_title": {
+        "description": "删除确认对话框的标题"
+    },
+    "todo_confirm_delete_content": "确定要删除该待办事项吗？",
+    "@todo_confirm_delete_content": {
+        "description": "删除确认对话框的内容"
+    },
+    "cancel": "取消",
+    "@cancel": {
+        "description": "取消按钮文本"
+    },
+    "delete": "删除",
+    "@delete": {
+        "description": "删除按钮文本"
+    },
+    "edit": "编辑",
+    "@edit": {
+        "description": "编辑按钮文本"
+    },
+    "add_todo": "添加待办事项",
+    "@add_todo": {
+        "description": "添加待办事项按钮文本"
+    },
+    "start_time": "开始时间",
+    "@start_time": {
+        "description": "开始时间标签"
+    },
+    "end_time": "结束时间",
+    "@end_time": {
+        "description": "结束时间标签"
+    },
+    "priority": "优先级",
+    "@priority": {
+        "description": "优先级标签"
+    },
+    "high": "高",
+    "@high": {
+        "description": "高优先级"
+    },
+    "medium": "中",
+    "@medium": {
+        "description": "中优先级"
+    },
+    "low": "低",
+    "@low": {
+        "description": "低优先级"
+    },
+    "unknown": "未知",
+    "@unknown": {
+        "description": "未知优先级"
+    },
+    "title": "标题",
+    "@title": {
+        "description": "标题字段标签"
+    },
+    "content": "内容",
+    "@content": {
+        "description": "内容字段标签"
+    },
+    "select_start_date": "选择开始日期",
+    "@select_start_date": {
+        "description": "开始日期选择器标签"
+    },
+    "select_end_date": "选择结束日期",
+    "@select_end_date": {
+        "description": "结束日期选择器标签"
+    },
+    "confirm": "确认",
+    "@confirm": {
+        "description": "确认按钮文本"
+    },
+    "save_todo": "保存待办事项",
+    "@save_todo": {
+        "description": "保存待办事项按钮文本"
+    },
+    "update_todo": "更新待办事项",
+    "@update_todo": {
+        "description": "更新待办事项按钮文本"
+    },
+    "todo_title_required": "标题不能为空",
+    "@todo_title_required": {
+        "description": "标题为空时的错误提示"
+    },
+    "todo_end_time_invalid": "结束时间必须晚于开始时间",
+    "@todo_end_time_invalid": {
+        "description": "结束时间早于开始时间时的错误提示"
+    },
+    "edit_todo": "编辑待办事项",
+    "@edit_todo": {
+    "description": "编辑待办事项的标题"
+    },
+
+
+
+    "breathing_app_title": "呼吸练习",
+    "@breathing_app_title": {
+      "description": "呼吸练习应用的标题"
+    },
+    "breathing_title": "呼吸练习",
+    "@breathing_title": {
+      "description": "呼吸练习页面的标题"
+    },
+    "breathing_ready": "准备开始",
+    "@breathing_ready": {
+      "description": "准备开始呼吸练习时的文本"
+    },
+    "breathing_instruction_start": "点击开始按钮进行4-7-8呼吸练习",
+    "@breathing_instruction_start": {
+      "description": "呼吸练习的初始说明"
+    },
+    "breathing_method_478": "4-7-8 呼吸法",
+    "@breathing_method_478": {
+      "description": "4-7-8呼吸法的标题"
+    },
+    "breathing_method_description": "吸气4秒，屏息7秒，呼气8秒",
+    "@breathing_method_description": {
+      "description": "4-7-8呼吸法的描述"
+    },
+    "breathing_method_benefit": "这种方法可以帮助平静神经系统，减少焦虑",
+    "@breathing_method_benefit": {
+      "description": "呼吸法的益处"
+    },
+    "breathing_inhale": "吸气",
+    "@breathing_inhale": {
+      "description": "吸气阶段的文本"
+    },
+    "breathing_hold": "屏息",
+    "@breathing_hold": {
+      "description": "屏息阶段的文本"
+    },
+    "breathing_exhale": "呼气",
+    "@breathing_exhale": {
+      "description": "呼气阶段的文本"
+    },
+    "breathing_instruction_inhale": "通过鼻子缓慢吸气... 4秒",
+    "@breathing_instruction_inhale": {
+      "description": "吸气阶段的说明"
+    },
+    "breathing_instruction_hold": "屏住呼吸... {seconds}秒",
+    "@breathing_instruction_hold": {
+      "description": "屏息阶段的说明，包含剩余秒数",
+      "placeholders": {
+        "seconds": {
+          "type": "int"
+        }
+      }
+    },
+    "breathing_instruction_exhale": "通过嘴巴缓慢呼气... {seconds}秒",
+    "@breathing_instruction_exhale": {
+      "description": "呼气阶段的说明，包含剩余秒数",
+      "placeholders": {
+        "seconds": {
+          "type": "int"
+        }
+      }
+    },
+    "breathing_paused": "已暂停",
+    "@breathing_paused": {
+      "description": "练习暂停时的文本"
+    },
+    "breathing_completed_cycles": "完成周期",
+    "@breathing_completed_cycles": {
+      "description": "完成周期计数的标签"
+    },
+    "start_exercise": "开始练习",
+    "@start_exercise": {
+      "description": "开始练习按钮的文本"
+    },
+    "stats": "统计信息",
+    "@stats": {
+      "description": "统计部分的标签"
+    },
+    "total_seconds": "总秒数",
+    "@total_seconds": {
+      "description": "总秒数的标签"
+    },
+    "pause": "暂停",
+    "@pause": {
+      "description": "暂停按钮的文字"
+    },
+    "reset": "重置",
+    "@reset": {
+      "description": "重置按钮的文字"
+    },
+    "todo_notify_before_hours":"提前提醒(小时)",
+    "todo_notify_before_minutes":"提前提醒(分钟)",
+    "todo_notify_time_invalid":"提醒时间不合法",
+
+    "daily_sentences":"每日一句",
+    "tilt_card_message_0": "坚持前行，小步亦能成就大事！",
+    "@tilt_card_message_0": { "description": "卡片上的积极短语 0" },
+  
+    "tilt_card_message_1": "每天一小步，离目标更近一点。",
+    "@tilt_card_message_1": { "description": "卡片上的积极短语 1" },
+  
+    "tilt_card_message_2": "让今天变得有意义——从现在开始。",
+    "@tilt_card_message_2": { "description": "卡片上的积极短语 2" },
+  
+    "tilt_card_message_3": "哪怕微小的进步，依然是进步。",
+    "@tilt_card_message_3": { "description": "卡片上的积极短语 3" },
+  
+    "tilt_card_message_4": "深呼吸，专注向前。",
+    "@tilt_card_message_4": { "description": "卡片上的积极短语 4" },
+  
+    "tilt_card_message_5": "一点一滴的坚持，成就你的未来。",
+    "@tilt_card_message_5": { "description": "卡片上的积极短语 5" },
+  
+    "tilt_card_message_6": "小小的胜利会汇聚成巨大改变。",
+    "@tilt_card_message_6": { "description": "卡片上的积极短语 6" },
+  
+    "tilt_card_message_7": "从你所在之处开始，利用你拥有的。",
+    "@tilt_card_message_7": { "description": "卡片上的积极短语 7" },
+  
+    "tilt_card_message_8": "追求进步，而非完美。",
+    "@tilt_card_message_8": { "description": "卡片上的积极短语 8" },
+  
+    "tilt_card_message_9": "为未来的自己行动。",
+    "@tilt_card_message_9": { "description": "卡片上的积极短语 9" },
+  
+    "tilt_card_message_10": "平静的心才能带来清晰的行动。",
+    "@tilt_card_message_10": { "description": "卡片上的积极短语 10" },
+  
+    "tilt_card_message_11": "为今天的微小胜利庆祝。",
+    "@tilt_card_message_11": { "description": "卡片上的积极短语 11" },
+    "tilt_touch_and_move": "摇晃手机试试",
+    "@tilt_touch_and_move": {"description": "倾斜卡片上显示的提示"},
+
+
+    "mood_category_happy": "开心",
+    "@mood_category_happy": { "description": "心情类别：开心" },
+  
+    "mood_category_surprised": "惊喜",
+    "@mood_category_surprised": { "description": "心情类别：惊喜" },
+  
+    "mood_category_funny": "滑稽",
+    "@mood_category_funny": { "description": "心情类别：滑稽 / 搞笑" },
+  
+    "mood_category_embarrassed": "尴尬",
+    "@mood_category_embarrassed": { "description": "心情类别：尴尬" },
+  
+    "mood_category_sad": "伤心",
+    "@mood_category_sad": { "description": "心情类别：伤心" },
+  
+    "mood_category_shocked": "惊讶",
+    "@mood_category_shocked": { "description": "心情类别：惊讶" },
+  
+    "mood_category_admire": "崇拜",
+    "@mood_category_admire": { "description": "心情类别：崇拜 / 敬佩" },
+  
+    "mood_category_angry": "生气",
+    "@mood_category_angry": { "description": "心情类别：生气" }
 }

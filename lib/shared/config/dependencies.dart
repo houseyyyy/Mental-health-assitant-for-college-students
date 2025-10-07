@@ -40,47 +40,155 @@ import '../view_models/statistic_view_model.dart';
 abstract final class Dependencies {
   /// 共享的状态管理
   static List<SingleChildWidget> get _sharedProviders => [
-    ..._useCaseProviders,
+        // use case 需要先注册（见下方 _useCaseProviders）
+        ..._useCaseProviders,
 
-    ChangeNotifierProvider(lazy: true, create: (context) => ApplicationViewModel(applicationUseCase: context.read())),
-    ChangeNotifierProvider(lazy: true, create: (context) => SecurityKeyViewModel(securityKeyUseCase: context.read())),
-    ChangeNotifierProvider(lazy: true, create: (context) => NotificationViewModel(awesomeNotifications: context.read())),
-    ChangeNotifierProvider(lazy: true, create: (context) => MoodViewModel(moodDataUseCase: context.read())),
-    ChangeNotifierProvider(lazy: true, create: (context) => StatisticViewModel(statisticUseCase: context.read())),
-  ];
+        ChangeNotifierProvider<ApplicationViewModel>(
+          lazy: true,
+          create: (context) => ApplicationViewModel(
+            applicationUseCase: context.read<ApplicationUseCase>(),
+          ),
+        ),
+
+        ChangeNotifierProvider<SecurityKeyViewModel>(
+          lazy: true,
+          create: (context) => SecurityKeyViewModel(
+            securityKeyUseCase: context.read<SecurityKeyUseCase>(),
+          ),
+        ),
+
+        // 关键：显式指定 NotificationViewModel 类型，并显式读取 AwesomeNotifications
+        Provider<NotificationService>.value(
+            value: NotificationService.instance, // ✅ 使用单例实例
+        ),
+
+        ChangeNotifierProvider<MoodViewModel>(
+          lazy: true,
+          create: (context) => MoodViewModel(
+            moodDataUseCase: context.read<MoodDataUseCase>(),
+          ),
+        ),
+
+        ChangeNotifierProvider<StatisticViewModel>(
+          lazy: true,
+          create: (context) => StatisticViewModel(
+            statisticUseCase: context.read<StatisticUseCase>(),
+          ),
+        ),
+      ];
 
   /// use case 依赖注入
   static List<SingleChildWidget> get _useCaseProviders => [
-    Provider(lazy: true, create: (context) => ApplicationUseCase(applicationRepository: context.read())),
-    Provider(lazy: true, create: (context) => DataImportExportUseCase(dataImportExportRepository: context.read())),
-    Provider(lazy: true, create: (context) => SecurityKeyUseCase(securityKeyRepository: context.read())),
-    Provider(lazy: true, create: (context) => MoodDataUseCase(moodDataRepository: context.read())),
-    Provider(lazy: true, create: (context) => MoodCategoryLoadUseCase(moodCategoryRepository: context.read())),
-    Provider(lazy: true, create: (context) => StatisticUseCase(statisticRepository: context.read())),
-  ];
+        Provider<ApplicationUseCase>(
+          lazy: true,
+          create: (context) => ApplicationUseCase(
+            applicationRepository: context.read<ApplicationRepository>(),
+          ),
+        ),
+        Provider<DataImportExportUseCase>(
+          lazy: true,
+          create: (context) => DataImportExportUseCase(
+            dataImportExportRepository:
+                context.read<DataImportExportRepository>(),
+          ),
+        ),
+        Provider<SecurityKeyUseCase>(
+          lazy: true,
+          create: (context) => SecurityKeyUseCase(
+            securityKeyRepository: context.read<SecurityKeyRepository>(),
+          ),
+        ),
+        Provider<MoodDataUseCase>(
+          lazy: true,
+          create: (context) =>
+              MoodDataUseCase(moodDataRepository: context.read<MoodDataRepository>()),
+        ),
+        Provider<MoodCategoryLoadUseCase>(
+          lazy: true,
+          create: (context) => MoodCategoryLoadUseCase(
+            moodCategoryRepository: context.read<MoodCategoryRepository>(),
+          ),
+        ),
+        Provider<StatisticUseCase>(
+          lazy: true,
+          create: (context) => StatisticUseCase(
+            statisticRepository: context.read<StatisticRepository>(),
+          ),
+        ),
+      ];
 
   /// 本地数据状态 依赖注入
   static List<SingleChildWidget> get providersLocal => [
-    Provider.value(value: DB.instance),
-    Provider.value(value: SharedPreferencesDB.instance),
-    Provider.value(value: AwesomeNotifications()),
+        // 把单例显式声明类型，方便后续 context.read<T>()
+        Provider<DB>.value(value: DB.instance),
+        Provider<SharedPreferencesDB>.value(value: SharedPreferencesDB.instance),
+        Provider<AwesomeNotifications>.value(value: AwesomeNotifications()),
 
-    Provider(create: (context) => ApplicationDao(sharedPreferencesDB: context.read())),
-    Provider(create: (context) => DataImportExportDao(database: context.read())),
-    Provider(create: (context) => SecurityKeyDao(sharedPreferencesDB: context.read())),
-    Provider(create: (context) => MoodDataDao(database: context.read())),
-    Provider(
-      create: (context) => MoodCategoryDao(database: context.read(), sharedPreferencesDB: context.read()),
-    ),
-    Provider(create: (context) => StatisticDao(database: context.read())),
+        Provider<ApplicationDao>(
+          create: (context) =>
+              ApplicationDao(sharedPreferencesDB: context.read<SharedPreferencesDB>()),
+        ),
 
-    Provider(create: (context) => ApplicationRepositoryLocal(applicationDao: context.read()) as ApplicationRepository),
-    Provider(create: (context) => DataImportExportRepositoryLocal(dataImportExportDao: context.read()) as DataImportExportRepository),
-    Provider(create: (context) => SecurityKeyRepositoryLocal(securityKeyDao: context.read()) as SecurityKeyRepository),
-    Provider(create: (context) => MoodDataRepositoryLocal(moodDataDao: context.read()) as MoodDataRepository),
-    Provider(create: (context) => MoodCategoryRepositoryLocal(moodCategoryDao: context.read()) as MoodCategoryRepository),
-    Provider(create: (context) => StatisticRepositoryLocal(statisticDao: context.read()) as StatisticRepository),
+        Provider<DataImportExportDao>(
+          create: (context) => DataImportExportDao(database: context.read<DB>()),
+        ),
 
-    ..._sharedProviders,
-  ];
+        Provider<SecurityKeyDao>(
+          create: (context) =>
+              SecurityKeyDao(sharedPreferencesDB: context.read<SharedPreferencesDB>()),
+        ),
+
+        Provider<MoodDataDao>(
+          create: (context) => MoodDataDao(database: context.read<DB>()),
+        ),
+
+        Provider<MoodCategoryDao>(
+          create: (context) => MoodCategoryDao(
+            database: context.read<DB>(),
+            sharedPreferencesDB: context.read<SharedPreferencesDB>(),
+          ),
+        ),
+
+        Provider<StatisticDao>(
+          create: (context) => StatisticDao(database: context.read<DB>()),
+        ),
+
+        // repositories — 显式类型为 domain 接口类型
+        Provider<ApplicationRepository>(
+          create: (context) =>
+              ApplicationRepositoryLocal(applicationDao: context.read<ApplicationDao>()),
+        ),
+
+        Provider<DataImportExportRepository>(
+          create: (context) => DataImportExportRepositoryLocal(
+            dataImportExportDao: context.read<DataImportExportDao>(),
+          ),
+        ),
+
+        Provider<SecurityKeyRepository>(
+          create: (context) => SecurityKeyRepositoryLocal(
+            securityKeyDao: context.read<SecurityKeyDao>(),
+          ),
+        ),
+
+        Provider<MoodDataRepository>(
+          create: (context) => MoodDataRepositoryLocal(
+            moodDataDao: context.read<MoodDataDao>(),
+          ),
+        ),
+
+        Provider<MoodCategoryRepository>(
+          create: (context) => MoodCategoryRepositoryLocal(
+            moodCategoryDao: context.read<MoodCategoryDao>(),
+          ),
+        ),
+
+        Provider<StatisticRepository>(
+          create: (context) => StatisticRepositoryLocal(
+            statisticDao: context.read<StatisticDao>(),
+          ),
+        ),
+
+        ..._sharedProviders,
+      ];
 }

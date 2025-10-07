@@ -17,14 +17,15 @@ class MoodCategoryLoadUseCase {
   Future<Result<List<MoodCategoryModel>>> execute() async {
     /// 默认值
     const moodCategoryList = [
-      MoodCategoryModel(icon: '😊', title: '开心'),
-      MoodCategoryModel(icon: '🎉', title: '惊喜'),
-      MoodCategoryModel(icon: '🤡', title: '滑稽'),
-      MoodCategoryModel(icon: '😅', title: '尴尬'),
-      MoodCategoryModel(icon: '😟', title: '伤心'),
-      MoodCategoryModel(icon: '🤯', title: '惊讶'),
-      MoodCategoryModel(icon: '🤩', title: '崇拜'),
-      MoodCategoryModel(icon: '😡', title: '生气'),
+      MoodCategoryModel(icon: '😊', title: 'happy'),
+      MoodCategoryModel(icon: '🎉', title: 'surprised'),
+      MoodCategoryModel(icon: '🤡', title: 'funny'),
+      MoodCategoryModel(icon: '😅', title: 'awkward'),
+      MoodCategoryModel(icon: '😟', title: 'sad'),
+      MoodCategoryModel(icon: '🤯', title: 'shocked'),
+      MoodCategoryModel(icon: '🤩', title: 'admiring'),
+      MoodCategoryModel(icon: '😡', title: 'angry'),
+
     ];
     final getInitMoodCategoryDefaultResult = await _moodCategoryRepository
         .getInitMoodCategoryDefault();

@@ -2,6 +2,7 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'tables/mood_info.dart';
 import 'tables/mood_info_category.dart';
+import 'tables/todo_info.dart';
 
 class DB {
   DB._();
@@ -42,6 +43,10 @@ class DB {
     /// 心情分类表
     batch.execute(MoodInfoCategory.dropTable);
     batch.execute(MoodInfoCategory.createTable);
+
+    /// Todo表
+    batch.execute(TodoInfo.dropTable);
+    batch.execute(TodoInfo.createTable);
 
     await batch.commit();
   }

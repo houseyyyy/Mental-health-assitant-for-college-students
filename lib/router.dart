@@ -16,15 +16,13 @@ import 'views/mood/mood.dart';
 import 'views/mood/mood_category_select.dart';
 import 'views/mood/mood_content_edit.dart';
 import 'views/statistic/statistic.dart';
-import 'views/laboratory/laboratory.dart';
-import 'views/laboratory/unimp_miniapps/unimp_miniapps.dart';
 import 'views/laboratory/tilt_example/tilt_example.dart';
-import 'views/laboratory/game/game.dart';
-import 'views/laboratory/game/mini_fantasy/mini_fantasy.dart';
-import 'views/laboratory/game/mini_game/mini_game.dart';
-import 'views/laboratory/ffi/ffi.dart';
-import 'views/laboratory/3d/3d.dart';
 import 'views/web_view/web_view.dart';
+
+import 'views/fuction/aichat/ai.dart';
+import 'views/fuction/pomodoro_clock/pomodoro_clock.dart';
+import 'views/fuction/todo/todolist.dart';
+import 'views/fuction/release_stress/release_stress.dart';
 
 /// 定义路由名称
 abstract final class Routes {
@@ -51,34 +49,23 @@ abstract final class Routes {
   /// 统计页
   static const String statistic = 'statistic';
 
-  /// 设置页-实验室
-  static const String settingLaboratory = 'settingLaboratory';
-
-  /// 设置页-实验室-uniapp 小程序
-  static const String laboratoryUniMPMiniapps = 'laboratoryUniMPMiniapps';
-
   /// 设置页-实验室-倾斜视差卡片
   static const String laboratoryTiltExample = 'laboratoryTiltExample';
 
-  /// 设置页-实验室-游戏合集
-  static const String laboratoryGame = 'laboratoryGame';
-
-  /// 设置页-实验室-游戏合集-Mini Fantasy
-  static const String laboratoryGameMiniFantasy = 'laboratoryGameMiniFantasy';
-
-  /// 设置页-实验室-游戏合集-疯狂射击、怪物生成
-  static const String laboratoryGameMiniGame = 'laboratoryGameMiniGame';
-
-  /// 设置页-实验室-3D 城市
-  static const String laboratoryPage3D = 'laboratoryPage3D';
-
-  /// 设置页-实验室-FFI 异步调用 C/C++
-  static const String laboratoryFFI = 'laboratoryFFI';
+  /// 功能页- ai -聊天
+  static const String aiScreen = 'AiScreen';
+  /// 功能页- 番茄钟
+  static const String pomodoro_clock = 'PomodoroApp';
+  /// 功能页- todo
+  static const String todolist = 'TodoListScreen';
+  /// 功能页- 呼吸
+  static const String breath = 'BreathingExercise';
 
   /// WebView
   ///
   /// - [url] 访问的 URL （通过 ValueConvert 编码传递）
   static const String webViewPage = 'webViewPage';
+
 }
 
 /// 路由管理
@@ -234,42 +221,6 @@ abstract final class AppRouter {
 
       /// 设置页-实验室
       GoRoute(
-        path: '/${Routes.settingLaboratory}',
-        name: Routes.settingLaboratory,
-        parentNavigatorKey: rootNavigatorKey,
-        pageBuilder: (_, _) => CustomTransitionPage(
-          child: const LaboratoryScreen(),
-          transitionsBuilder: (_, animation, secondaryAnimation, child) {
-            return CupertinoPageTransition(
-              primaryRouteAnimation: animation,
-              secondaryRouteAnimation: secondaryAnimation,
-              linearTransition: false,
-              child: child,
-            );
-          },
-        ),
-      ),
-
-      /// 设置页-实验室-uniapp 小程序
-      GoRoute(
-        path: '/${Routes.laboratoryUniMPMiniapps}',
-        name: Routes.laboratoryUniMPMiniapps,
-        parentNavigatorKey: rootNavigatorKey,
-        pageBuilder: (_, _) => CustomTransitionPage(
-          child: const UniMPMiniappsScreen(),
-          transitionsBuilder: (_, animation, secondaryAnimation, child) {
-            return CupertinoPageTransition(
-              primaryRouteAnimation: animation,
-              secondaryRouteAnimation: secondaryAnimation,
-              linearTransition: false,
-              child: child,
-            );
-          },
-        ),
-      ),
-
-      /// 设置页-实验室-倾斜视差卡片
-      GoRoute(
         path: '/${Routes.laboratoryTiltExample}',
         name: Routes.laboratoryTiltExample,
         parentNavigatorKey: rootNavigatorKey,
@@ -286,102 +237,6 @@ abstract final class AppRouter {
         ),
       ),
 
-      /// 设置页-实验室-游戏合集
-      GoRoute(
-        path: '/${Routes.laboratoryGame}',
-        name: Routes.laboratoryGame,
-        parentNavigatorKey: rootNavigatorKey,
-        pageBuilder: (_, _) => CustomTransitionPage(
-          child: const GameScreen(),
-          transitionsBuilder: (_, animation, secondaryAnimation, child) {
-            return CupertinoPageTransition(
-              primaryRouteAnimation: animation,
-              secondaryRouteAnimation: secondaryAnimation,
-              linearTransition: false,
-              child: child,
-            );
-          },
-        ),
-        routes: [
-          /// 设置页-实验室-游戏合集-Mini Fantasy
-          GoRoute(
-            path: Routes.laboratoryGameMiniFantasy,
-            name: Routes.laboratoryGameMiniFantasy,
-            pageBuilder: (_, _) => CustomTransitionPage(
-              child: const MiniFantasyScreen(),
-              transitionsBuilder: (_, animation, secondaryAnimation, child) {
-                return CupertinoPageTransition(
-                  primaryRouteAnimation: animation,
-                  secondaryRouteAnimation: secondaryAnimation,
-                  linearTransition: false,
-                  child: child,
-                );
-              },
-            ),
-          ),
-
-          /// 设置页-实验室-游戏合集-疯狂射击、怪物生成
-          GoRoute(
-            path: Routes.laboratoryGameMiniGame,
-            name: Routes.laboratoryGameMiniGame,
-            pageBuilder: (_, _) => CustomTransitionPage(
-              child: PopScope(
-                canPop: false,
-                onPopInvokedWithResult: (bool didPop, _) async {
-                  if (didPop) return;
-                  // 竖屏
-                  await Flame.device.setPortrait();
-                },
-                child: const MiniGameScreen(),
-              ),
-              transitionsBuilder: (_, animation, secondaryAnimation, child) {
-                return CupertinoPageTransition(
-                  primaryRouteAnimation: animation,
-                  secondaryRouteAnimation: secondaryAnimation,
-                  linearTransition: false,
-                  child: child,
-                );
-              },
-            ),
-          ),
-        ],
-      ),
-
-      /// 设置页-实验室-FFI 异步调用 C/C++
-      GoRoute(
-        path: '/${Routes.laboratoryFFI}',
-        name: Routes.laboratoryFFI,
-        parentNavigatorKey: rootNavigatorKey,
-        pageBuilder: (_, _) => CustomTransitionPage(
-          child: const FFIScreen(),
-          transitionsBuilder: (_, animation, secondaryAnimation, child) {
-            return CupertinoPageTransition(
-              primaryRouteAnimation: animation,
-              secondaryRouteAnimation: secondaryAnimation,
-              linearTransition: false,
-              child: child,
-            );
-          },
-        ),
-      ),
-
-      /// 设置页-实验室-3D 城市
-      GoRoute(
-        path: '/${Routes.laboratoryPage3D}',
-        name: Routes.laboratoryPage3D,
-        parentNavigatorKey: rootNavigatorKey,
-        pageBuilder: (_, _) => CustomTransitionPage(
-          child: const Demo3DScreen(),
-          transitionsBuilder: (_, animation, secondaryAnimation, child) {
-            return CupertinoPageTransition(
-              primaryRouteAnimation: animation,
-              secondaryRouteAnimation: secondaryAnimation,
-              linearTransition: false,
-              child: child,
-            );
-          },
-        ),
-      ),
 
       /// WebView
       GoRoute(
@@ -400,6 +255,80 @@ abstract final class AppRouter {
           },
         ),
       ),
+
+      /// 功能页 -aichat
+      GoRoute(
+        path: '/${Routes.aiScreen}',
+        name: Routes.aiScreen,
+        parentNavigatorKey: rootNavigatorKey,
+        pageBuilder: (_, __) => CustomTransitionPage(
+          child: const AiScreen(), // <- 如果类名不是 AiScreen，改成你实际的类名
+          transitionsBuilder: (_, animation, secondaryAnimation, child) {
+            return CupertinoPageTransition(
+              primaryRouteAnimation: animation,
+              secondaryRouteAnimation: secondaryAnimation,
+              linearTransition: false,
+              child: child,
+            );
+          },
+        ),
+      ),
+
+      /// 功能页 -pomodoro clock
+      GoRoute(
+        path: '/${Routes.pomodoro_clock}',
+        name: Routes.pomodoro_clock,
+        parentNavigatorKey: rootNavigatorKey,
+        pageBuilder: (_, __) => CustomTransitionPage(
+          child: const PomodoroTimer(), // <- 如果类名不是 AiScreen，改成你实际的类名
+          transitionsBuilder: (_, animation, secondaryAnimation, child) {
+            return CupertinoPageTransition(
+              primaryRouteAnimation: animation,
+              secondaryRouteAnimation: secondaryAnimation,
+              linearTransition: false,
+              child: child,
+            );
+          },
+        ),
+      ),
+      /// 功能页 - todo list
+      GoRoute(
+        path: '/${Routes.todolist}',
+        name: Routes.todolist,
+        parentNavigatorKey: rootNavigatorKey,
+        pageBuilder: (_, __) => CustomTransitionPage(
+          child: const TodoListScreen(),
+          transitionsBuilder: (_, animation, secondaryAnimation, child) {
+            return CupertinoPageTransition(
+              primaryRouteAnimation: animation,
+              secondaryRouteAnimation: secondaryAnimation,
+              linearTransition: false,
+              child: child,
+            );
+          },
+        ),
+      ),
+
+
+      /// 功能页 - todo list
+      GoRoute(
+        path: '/${Routes.breath}',
+        name: Routes.breath,
+        parentNavigatorKey: rootNavigatorKey,
+        pageBuilder: (_, __) => CustomTransitionPage(
+          child: const BreathingExercise(),
+          transitionsBuilder: (_, animation, secondaryAnimation, child) {
+            return CupertinoPageTransition(
+              primaryRouteAnimation: animation,
+              secondaryRouteAnimation: secondaryAnimation,
+              linearTransition: false,
+              child: child,
+            );
+          },
+        ),
+      ),
+
+
     ],
   );
 }

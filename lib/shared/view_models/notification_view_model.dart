@@ -1,147 +1,81 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+// lib/shared/services/notification_service.dart
 import 'package:awesome_notifications/awesome_notifications.dart';
-import '../../l10n/gen/app_localizations.dart';
-import '../../themes/app_theme.dart';
+import 'package:flutter/widgets.dart';
+import '../../domain/models/todo/todo_item.dart';
 
-/// 通知相关
-class NotificationViewModel extends ChangeNotifier {
-  NotificationViewModel({required AwesomeNotifications awesomeNotifications})
-    : _awesomeNotifications = awesomeNotifications {
-    init();
+class NotificationService {
+  NotificationService._internal();
+  static final NotificationService instance = NotificationService._internal();
+
+  final AwesomeNotifications _aw = AwesomeNotifications();
+
+  /// 在应用启动时调用一次（你已有的 init 可继续使用）
+  Future<void> initialize() async {
+    // 你原来 NotificationService.init() 的初始化可以沿用，
+    // 保持此处空实现或放置 fallback 初始化逻辑
   }
 
-  final AwesomeNotifications _awesomeNotifications;
+  Future<bool> isPermissionGranted() => _aw.isNotificationAllowed();
 
-  /// 通知测试
-  Future<void> sendTest(BuildContext context) async {
-    final isAllowed = await _awesomeNotifications.isNotificationAllowed();
-    if (isAllowed) {
-      await cancelNotificationAll();
-      await sendNotification(context);
-      await sendScheduleNotification(context);
-    }
+  Future<bool> requestPermission() => _aw.requestPermissionToSendNotifications();
+
+  Future<void> cancelNotification(int id) async {
+    try {
+      await _aw.cancel(id);
+    } catch (_) {}
   }
 
-  /// 通知初始化
-  Future<void> init() async {
-    final channels = [
-      NotificationChannel(
-        channelKey: 'notification',
-        channelName: '通知',
-        channelDescription: 'Mood 通知',
-        playSound: true,
-        onlyAlertOnce: true,
-        groupAlertBehavior: GroupAlertBehavior.Children,
-        importance: NotificationImportance.High,
-        defaultPrivacy: NotificationPrivacy.Private,
-      ),
-    ];
-    await _awesomeNotifications.initialize('resource://drawable/app_icon', channels, debug: true);
-  }
+  Future<void> cancelAll() async => _aw.cancelAll();
 
-  /// 关闭并取消所有通知和计划
-  Future<void> cancelNotificationAll() async => _awesomeNotifications.cancelAll();
+  /// 将 DateTime 转成 NotificationCalendar，创建一次性通知
+  Future<void> _createOneShotNotification({
+    required int id,
+    required String channelKey,
+    required String title,
+    String? body,
+    required DateTime scheduleAt,
+  }) async {
+    if (!scheduleAt.isAfter(DateTime.now())) return;
 
-  /// 重置小红点计数器
-  Future<void> resetBadgeCounter() async => _awesomeNotifications.resetGlobalBadge();
-
-  /// 通知权限判断显示
-  Future<void> allowedNotification(BuildContext context) async {
-    final isAllowed = await _awesomeNotifications.isNotificationAllowed();
-    if (!isAllowed) {
-      WidgetsBinding.instance.endOfFrame.then((_) async {
-        if (context.mounted) {
-          await _showNotificationRationale(context);
-        }
-      });
-    }
-  }
-
-  /// 发送普通通知
-  Future<void> sendNotification(BuildContext context) async {
-    final appL10n = AppL10n.of(context);
-    final isAllowed = await _awesomeNotifications.isNotificationAllowed();
+    final isAllowed = await _aw.isNotificationAllowed();
     if (!isAllowed) return;
 
-    await _awesomeNotifications.createNotification(
+    await _aw.createNotification(
       content: NotificationContent(
-        id: 1,
-        channelKey: 'notification',
-        title: appL10n.local_notification_welcome_title,
-        body: appL10n.local_notification_welcome_body,
+        id: id,
+        channelKey: channelKey,
+        title: title,
+        body: body ?? '',
         actionType: ActionType.Default,
-        category: NotificationCategory.Event,
+        category: NotificationCategory.Reminder,
       ),
+      schedule: NotificationCalendar.fromDate(date: scheduleAt),
     );
   }
 
-  /// 发送定时计划通知
-  Future<void> sendScheduleNotification(BuildContext context) async {
-    final appL10n = AppL10n.of(context);
-    final localTimeZone = await _awesomeNotifications.getLocalTimeZoneIdentifier();
-    final isAllowed = await _awesomeNotifications.isNotificationAllowed();
-    if (!isAllowed) return;
-
-    await _awesomeNotifications.createNotification(
-      content: NotificationContent(
-        id: -1, // 随机ID
-        channelKey: 'notification',
-        title: appL10n.local_notification_schedule_title,
-        body: appL10n.local_notification_schedule_body,
-        actionType: ActionType.Default,
-        category: NotificationCategory.Event,
-      ),
-      schedule: NotificationCalendar(
-        second: 0, // 当秒到达 0 时将会通知，意味着每个分钟的整点会通知
-        timeZone: localTimeZone,
-        allowWhileIdle: true,
-        preciseAlarm: true,
-        repeats: true,
-      ),
+  /// 根据 TodoItem 的 notifyBefore* 字段决定是否创建一次性通知
+  Future<void> scheduleTodoNotificationIfNeeded(TodoItem todo) async {
+    final h = todo.notifyBeforeHours;
+    final m = todo.notifyBeforeMinutes;
+    if ((h == 0 && m == 0) || todo.id == null) {
+      // 0 表示不提醒，或没有 id 无法作为唯一通知 id
+      return;
+    }
+    final scheduleTime =
+        todo.startTime.subtract(Duration(hours: h, minutes: m));
+    if (!scheduleTime.isAfter(DateTime.now())) return;
+    
+    await _createOneShotNotification(
+      id: todo.id!, // 使用 todo.id 作为 notification id
+      channelKey: 'notification',
+      title: '待办提醒：${todo.title}',
+      body: todo.content,
+      scheduleAt: scheduleTime,
     );
-  }
 
-  /// 通知权限
-  Future<bool> _showNotificationRationale(BuildContext context) async {
-    final theme = Theme.of(context);
-    final isDark = AppTheme(context).isDarkMode;
-    final appL10n = AppL10n.of(context);
-    var userAuthorized = false;
-
-    await showCupertinoDialog<void>(
-      context: context,
-      builder: (BuildContext context) {
-        return Theme(
-          data: isDark ? ThemeData.dark() : ThemeData.light(),
-          child: CupertinoAlertDialog(
-            key: const Key('notification_rationale_dialog'),
-            title: Text(appL10n.local_notification_dialog_allow_title),
-            content: Text(appL10n.local_notification_dialog_allow_content),
-            actions: <CupertinoDialogAction>[
-              CupertinoDialogAction(
-                key: const Key('notification_rationale_close'),
-                child: Text(appL10n.local_notification_dialog_allow_cancel),
-                textStyle: TextStyle(color: theme.textTheme.bodyMedium?.color),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
-              CupertinoDialogAction(
-                key: const Key('notification_rationale_ok'),
-                isDefaultAction: true,
-                child: Text(appL10n.local_notification_dialog_allow_confirm),
-                textStyle: TextStyle(color: theme.textTheme.bodyMedium?.color),
-                onPressed: () {
-                  userAuthorized = true;
-                  Navigator.pop(context);
-                },
-              ),
-            ],
-          ),
-        );
-      },
-    );
-    return userAuthorized && await _awesomeNotifications.requestPermissionToSendNotifications();
+    debugPrint('>>> scheduleTodoNotificationIfNeeded: id=${todo.id}');
+    debugPrint('>>> notifyBefore ${todo.notifyBeforeHours}h ${todo.notifyBeforeMinutes}m');
+    debugPrint('>>> todo.startTime = ${todo.startTime.toIso8601String()}');
+    debugPrint('>>> computed scheduleTime = ${scheduleTime.toIso8601String()} now=${DateTime.now().toIso8601String()}');
   }
 }

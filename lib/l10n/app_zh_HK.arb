@@ -60,11 +60,15 @@
     "home_upgrade_title": "功能更新",
     "home_upgrade_content": "了解最新使用場景",
     "home_upgrade_button": "查看",
-    "home_help_title": "幫助",
-    "home_help_article_title_1": "自我成長",
-    "home_help_article_content_1": "認知和意識過程產生對外界事物的態度...",
-    "home_help_article_title_2": "情緒管理",
-    "home_help_article_content_2": "如何更好地管理自己的情緒...",
+    "home_help_title": "功能",
+    "home_help_article_title_1": "心理助手",
+    "home_help_article_content_1": "了解你心情的chat-gpt...",
+    "home_help_article_title_2": "番茄鐘",
+    "home_help_article_content_2": "對專注說不定有用...",
+    "home_help_article_title_3": "待辦事項",
+    "home_help_article_content_3": "記錄並提醒您的截止日期……",
+    "home_help_article_title_4": "深呼吸",
+  "home_help_article_content_4": "科學的深呼吸練習...",
 
     "mood_title": "心情",
     "mood_add_button": "記錄",
@@ -115,5 +119,326 @@
     "local_notification_dialog_allow_cancel": "取消",
     "local_notification_dialog_allow_confirm": "前往設置",
     "local_notification_schedule_title": "📅 定時計劃通知",
-    "local_notification_schedule_body": "每1分鐘你將看見此通知"
+    "local_notification_schedule_body": "每1分鐘你將看見此通知",
+
+
+
+    "ai_title": "心理助手",
+    "ai_title@@description": "AI 聊天頁面標題（香港繁體）",
+    "ai_input_hint": "請輸入你的問題或訊息...",
+    "ai_input_hint@@description": "輸入框提示文字（香港繁體）",
+    "ai_stop_tooltip": "停止",
+    "ai_stop_tooltip@@description": "停止按鈕的提示文字（香港繁體）",
+    "ai_sending_text": "AI 正在輸入...",
+    "ai_sending_text@@description": "顯示 AI 正在輸入時的文案（香港繁體）",
+    "ai_apiKey_missing_title": "未設定 API Key",
+    "ai_apiKey_missing_title@@description": "提示使用者尚未設定 API Key 的標題（香港繁體）",
+    "ai_apiKey_missing_message": "請在專案根目錄建立 .env，並加入 DEEPSEEK_KEY=<your_key>，然後重新啟動應用程式。",
+    "ai_apiKey_missing_message@@description": "提示使用者如何加入 API Key 的說明（香港繁體）",
+    "ai_ok": "知道了",
+    "ai_ok@@description": "對話框確認按鈕文字（香港繁體）",
+
+
+
+
+    "pomodoro_mode_work_title": "工作模式",
+    "@pomodoro_mode_work_title": {
+      "description": "工作模式下的應用欄標題"
+    },
+    
+    "pomodoro_mode_break_title": "休息模式",
+    "@pomodoro_mode_break_title": {
+      "description": "休息模式下的應用欄標題"
+    },
+    
+    "pomodoro_completed_label": "已完成的番茄鐘",
+    "@pomodoro_completed_label": {
+      "description": "番茄鐘完成指示器上方的標籤"
+    },
+    
+    "pomodoro_snack_work_end": "休息時間結束——回到工作吧！",
+    "@pomodoro_snack_work_end": {
+      "description": "休息結束切換到工作模式時的提示欄文字"
+    },
+    
+    "pomodoro_snack_break_end": "工作時間結束——休息一下吧！",
+    "@pomodoro_snack_break_end": {
+      "description": "工作結束切換到休息模式時的提示欄文字"
+    },
+    
+    "pomodoro_reset_tooltip": "重置",
+    "@pomodoro_reset_tooltip": {
+      "description": "重置按鈕的提示文字"
+    },
+    
+    "pomodoro_toggle_tooltip": "切換模式",
+    "@pomodoro_toggle_tooltip": {
+      "description": "用於在工作和休息模式間切換的提示文字"
+    },
+
+
+
+
+    "todo_app_title": "待辦事項應用",
+    "@todo_app_title": {
+      "description": "待辦事項應用的標題"
+    },
+    "todo_list_title": "待辦事項",
+    "@todo_list_title": {
+      "description": "待辦事項列表頁面的標題"
+    },
+    "todo_confirm_delete_title": "確認刪除",
+    "@todo_confirm_delete_title": {
+      "description": "刪除確認對話框的標題"
+    },
+    "todo_confirm_delete_content": "確定要刪除該待辦事項嗎？",
+    "@todo_confirm_delete_content": {
+      "description": "刪除確認對話框的內容"
+    },
+    "cancel": "取消",
+    "@cancel": {
+      "description": "取消按鈕文字"
+    },
+    "delete": "刪除",
+    "@delete": {
+      "description": "刪除按鈕文字"
+    },
+    "edit": "編輯",
+    "@edit": {
+      "description": "編輯按鈕文字"
+    },
+    "add_todo": "新增待辦事項",
+    "@add_todo": {
+      "description": "新增待辦事項按鈕文字"
+    },
+    "start_time": "開始時間",
+    "@start_time": {
+      "description": "開始時間標籤"
+    },
+    "end_time": "結束時間",
+    "@end_time": {
+      "description": "結束時間標籤"
+    },
+    "priority": "優先級",
+    "@priority": {
+      "description": "優先級標籤"
+    },
+    "high": "高",
+    "@high": {
+      "description": "高優先級"
+    },
+    "medium": "中",
+    "@medium": {
+      "description": "中優先級"
+    },
+    "low": "低",
+    "@low": {
+      "description": "低優先級"
+    },
+    "unknown": "未知",
+    "@unknown": {
+      "description": "未知優先級"
+    },
+    "title": "標題",
+    "@title": {
+      "description": "標題欄位標籤"
+    },
+    "content": "內容",
+    "@content": {
+      "description": "內容欄位標籤"
+    },
+    "select_start_date": "選擇開始日期",
+    "@select_start_date": {
+      "description": "開始日期選擇器標籤"
+    },
+    "select_end_date": "選擇結束日期",
+    "@select_end_date": {
+      "description": "結束日期選擇器標籤"
+    },
+    "confirm": "確認",
+    "@confirm": {
+      "description": "確認按鈕文字"
+    },
+    "save_todo": "儲存待辦事項",
+    "@save_todo": {
+      "description": "儲存待辦事項按鈕文字"
+    },
+    "update_todo": "更新待辦事項",
+    "@update_todo": {
+      "description": "更新待辦事項按鈕文字"
+    },
+    "todo_title_required": "標題不能為空",
+    "@todo_title_required": {
+      "description": "標題為空時的錯誤提示"
+    },
+    "todo_end_time_invalid": "結束時間必須晚於開始時間",
+    "@todo_end_time_invalid": {
+      "description": "結束時間早於開始時間時的錯誤提示"
+    },
+    "edit_todo": "編輯待辦事項",
+    "@edit_todo": {
+      "description": "編輯待辦事項的標題"
+    },
+
+
+
+
+    "breathing_app_title": "呼吸練習",
+    "@breathing_app_title": {
+      "description": "呼吸練習應用的標題"
+    },
+    "breathing_title": "呼吸練習",
+    "@breathing_title": {
+      "description": "呼吸練習頁面的標題"
+    },
+    "breathing_ready": "準備開始",
+    "@breathing_ready": {
+      "description": "準備開始呼吸練習時的文字"
+    },
+    "breathing_instruction_start": "點擊開始按鈕進行4-7-8呼吸練習",
+    "@breathing_instruction_start": {
+      "description": "呼吸練習的初始說明"
+    },
+    "breathing_method_478": "4-7-8 呼吸法",
+    "@breathing_method_478": {
+      "description": "4-7-8呼吸法的標題"
+    },
+    "breathing_method_description": "吸氣4秒，屏息7秒，呼氣8秒",
+    "@breathing_method_description": {
+      "description": "4-7-8呼吸法的描述"
+    },
+    "breathing_method_benefit": "這種方法可以幫助平靜神經系統，減少焦慮",
+    "@breathing_method_benefit": {
+      "description": "呼吸法的益處"
+    },
+    "breathing_inhale": "吸氣",
+    "@breathing_inhale": {
+      "description": "吸氣階段的文字"
+    },
+    "breathing_hold": "屏息",
+    "@breathing_hold": {
+      "description": "屏息階段的文字"
+    },
+    "breathing_exhale": "呼氣",
+    "@breathing_exhale": {
+      "description": "呼氣階段的文字"
+    },
+    "breathing_instruction_inhale": "通過鼻子緩慢吸氣... 4秒",
+    "@breathing_instruction_inhale": {
+      "description": "吸氣階段的說明"
+    },
+    "breathing_instruction_hold": "屏住呼吸... {seconds}秒",
+    "@breathing_instruction_hold": {
+      "description": "屏息階段的說明，包含剩餘秒數",
+      "placeholders": {
+        "seconds": {
+          "type": "int"
+        }
+      }
+    },
+    "breathing_instruction_exhale": "通過嘴巴緩慢呼氣... {seconds}秒",
+    "@breathing_instruction_exhale": {
+      "description": "呼氣階段的說明，包含剩餘秒數",
+      "placeholders": {
+        "seconds": {
+          "type": "int"
+        }
+      }
+    },
+    "breathing_paused": "已暫停",
+    "@breathing_paused": {
+      "description": "練習暫停時的文字"
+    },
+    "breathing_completed_cycles": "完成週期",
+    "@breathing_completed_cycles": {
+      "description": "完成週期計數的標籤"
+    },
+    "start_exercise": "開始練習",
+    "@start_exercise": {
+      "description": "開始練習按鈕的文字"
+    },
+    "stats": "統計資訊",
+    "@stats": {
+      "description": "統計部分的標籤"
+    },
+    "total_seconds": "總秒數",
+    "@total_seconds": {
+      "description": "總秒數的標籤"
+    },
+    "pause": "暫停",
+    "@pause": {
+      "description": "暫停按鈕的文字"
+    },
+    "reset": "重置",
+    "@reset": {
+      "description": "重置按鈕的文字"
+    },
+
+    "todo_notify_before_hours":"提前提醒(小時)",
+    "todo_notify_before_minutes":"提前提醒(分鐘)",
+    "todo_notify_time_invalid":"提醒時間不合法",
+    
+    "daily_sentences":"每日一句",
+    "tilt_card_message_0": "堅持前行，小步亦能成就大事！",
+    "@tilt_card_message_0": { "description": "卡片上的積極短語 0" },
+  
+    "tilt_card_message_1": "每天一小步，離目標更近一點。",
+    "@tilt_card_message_1": { "description": "卡片上的積極短語 1" },
+  
+    "tilt_card_message_2": "讓今天變得有意義—從現在開始。",
+    "@tilt_card_message_2": { "description": "卡片上的積極短語 2" },
+  
+    "tilt_card_message_3": "哪怕微小的進步，依然是進步。",
+    "@tilt_card_message_3": { "description": "卡片上的積極短語 3" },
+  
+    "tilt_card_message_4": "深呼吸，專注向前。",
+    "@tilt_card_message_4": { "description": "卡片上的積極短語 4" },
+  
+    "tilt_card_message_5": "一點一滴的堅持，成就你的未來。",
+    "@tilt_card_message_5": { "description": "卡片上的積極短語 5" },
+  
+    "tilt_card_message_6": "小小的勝利會匯聚成巨大改變。",
+    "@tilt_card_message_6": { "description": "卡片上的積極短語 6" },
+  
+    "tilt_card_message_7": "從你所在之處開始，利用你擁有的。",
+    "@tilt_card_message_7": { "description": "卡片上的積極短語 7" },
+  
+    "tilt_card_message_8": "追求進步，而非完美。",
+    "@tilt_card_message_8": { "description": "卡片上的積極短語 8" },
+  
+    "tilt_card_message_9": "為未來的自己行動。",
+    "@tilt_card_message_9": { "description": "卡片上的積極短語 9" },
+  
+    "tilt_card_message_10": "平靜的心才能帶來清晰的行動。",
+    "@tilt_card_message_10": { "description": "卡片上的積極短語 10" },
+  
+    "tilt_card_message_11": "為今天的微小勝利慶祝。",
+    "@tilt_card_message_11": { "description": "卡片上的積極短語 11" },
+    "tilt_touch_and_move": "觸摸並四處移動",
+    "@tilt_touch_and_move": {"description": "傾斜卡片上顯示的提示"},
+
+
+    "mood_category_happy": "開心",
+    "@mood_category_happy": { "description": "心情類別：開心" },
+  
+    "mood_category_surprised": "驚喜",
+    "@mood_category_surprised": { "description": "心情類別：驚喜" },
+  
+    "mood_category_funny": "滑稽",
+    "@mood_category_funny": { "description": "心情類別：滑稽 / 搞笑" },
+  
+    "mood_category_embarrassed": "尷尬",
+    "@mood_category_embarrassed": { "description": "心情類別：尷尬" },
+  
+    "mood_category_sad": "傷心",
+    "@mood_category_sad": { "description": "心情類別：傷心" },
+  
+    "mood_category_shocked": "驚訝",
+    "@mood_category_shocked": { "description": "心情類別：驚訝" },
+  
+    "mood_category_admire": "崇拜",
+    "@mood_category_admire": { "description": "心情類別：崇拜 / 敬佩" },
+  
+    "mood_category_angry": "生氣",
+    "@mood_category_angry": { "description": "心情類別：生氣" }
 }

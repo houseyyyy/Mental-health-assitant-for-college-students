@@ -4,7 +4,9 @@ import 'package:provider/provider.dart';
 import 'shared/config/dependencies.dart';
 import 'application.dart';
 
-void main() {
+
+void main(){
+
   runApp(
     MultiProvider(
       providers: Dependencies.providersLocal,

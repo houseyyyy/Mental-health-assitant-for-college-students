@@ -169,11 +169,11 @@ class Menu extends StatelessWidget {
           },
         ),
         MenuItem(
-          icon: Remix.flask_line,
-          title: appL10n.app_setting_laboratory,
+          icon: Remix.gemini_line,
+          title: appL10n.daily_sentences,
           onTap: () {
-            print('实验室');
-            GoRouter.of(context).pushNamed(Routes.settingLaboratory);
+            print('每日一句');
+            GoRouter.of(context).pushNamed(Routes.laboratoryTiltExample);
           },
         ),
         MenuItem(

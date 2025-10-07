@@ -408,32 +408,56 @@ abstract class AppL10n {
   /// No description provided for @home_help_title.
   ///
   /// In en, this message translates to:
-  /// **'Help'**
+  /// **'Functions'**
   String get home_help_title;
 
   /// No description provided for @home_help_article_title_1.
   ///
   /// In en, this message translates to:
-  /// **'Self-growth'**
+  /// **'Psychological Assistant'**
   String get home_help_article_title_1;
 
   /// No description provided for @home_help_article_content_1.
   ///
   /// In en, this message translates to:
-  /// **'Cognitive and conscious processes produce attitudes towards external things...'**
+  /// **'A ChatGPT that understands your mood...'**
   String get home_help_article_content_1;
 
   /// No description provided for @home_help_article_title_2.
   ///
   /// In en, this message translates to:
-  /// **'Emotion management'**
+  /// **'Pomodoro Timer'**
   String get home_help_article_title_2;
 
   /// No description provided for @home_help_article_content_2.
   ///
   /// In en, this message translates to:
-  /// **'How to better manage your emotions...'**
+  /// **'Might be useful for focus...'**
   String get home_help_article_content_2;
+
+  /// No description provided for @home_help_article_title_3.
+  ///
+  /// In en, this message translates to:
+  /// **'ToDo'**
+  String get home_help_article_title_3;
+
+  /// No description provided for @home_help_article_content_3.
+  ///
+  /// In en, this message translates to:
+  /// **'record and remind your deadline...'**
+  String get home_help_article_content_3;
+
+  /// No description provided for @home_help_article_title_4.
+  ///
+  /// In en, this message translates to:
+  /// **'Deep Breathing'**
+  String get home_help_article_title_4;
+
+  /// No description provided for @home_help_article_content_4.
+  ///
+  /// In en, this message translates to:
+  /// **'Take a deep breath and relax'**
+  String get home_help_article_content_4;
 
   /// No description provided for @mood_title.
   ///
@@ -680,6 +704,510 @@ abstract class AppL10n {
   /// In en, this message translates to:
   /// **'Every 1 minute'**
   String get local_notification_schedule_body;
+
+  /// No description provided for @ai_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Psychological assitant'**
+  String get ai_title;
+
+  /// No description provided for @ai_input_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'Type your question or message...'**
+  String get ai_input_hint;
+
+  /// No description provided for @ai_stop_tooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop'**
+  String get ai_stop_tooltip;
+
+  /// No description provided for @ai_sending_text.
+  ///
+  /// In en, this message translates to:
+  /// **'AI is typing...'**
+  String get ai_sending_text;
+
+  /// No description provided for @ai_apiKey_missing_title.
+  ///
+  /// In en, this message translates to:
+  /// **'API Key missing'**
+  String get ai_apiKey_missing_title;
+
+  /// No description provided for @ai_apiKey_missing_message.
+  ///
+  /// In en, this message translates to:
+  /// **'Please add DEEPSEEK_KEY=<your_key> to a .env file at project root and restart the app.'**
+  String get ai_apiKey_missing_message;
+
+  /// No description provided for @ai_ok.
+  ///
+  /// In en, this message translates to:
+  /// **'OK'**
+  String get ai_ok;
+
+  /// AppBar title when in work mode
+  ///
+  /// In en, this message translates to:
+  /// **'Work Mode'**
+  String get pomodoro_mode_work_title;
+
+  /// AppBar title when in break mode
+  ///
+  /// In en, this message translates to:
+  /// **'Break Mode'**
+  String get pomodoro_mode_break_title;
+
+  /// Label above the completed pomodoro indicators
+  ///
+  /// In en, this message translates to:
+  /// **'Completed Pomodoros'**
+  String get pomodoro_completed_label;
+
+  /// Snackbar text when break ends and switching to work
+  ///
+  /// In en, this message translates to:
+  /// **'Break time over — back to work!'**
+  String get pomodoro_snack_work_end;
+
+  /// Snackbar text when work ends and switching to break
+  ///
+  /// In en, this message translates to:
+  /// **'Work time over — take a break!'**
+  String get pomodoro_snack_break_end;
+
+  /// Tooltip for reset button
+  ///
+  /// In en, this message translates to:
+  /// **'Reset'**
+  String get pomodoro_reset_tooltip;
+
+  /// Tooltip for toggling between work and break
+  ///
+  /// In en, this message translates to:
+  /// **'Toggle mode'**
+  String get pomodoro_toggle_tooltip;
+
+  /// Title of the todo application
+  ///
+  /// In en, this message translates to:
+  /// **'Todo Application'**
+  String get todo_app_title;
+
+  /// Title of the todo list screen
+  ///
+  /// In en, this message translates to:
+  /// **'Todo List'**
+  String get todo_list_title;
+
+  /// Title of the delete confirmation dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Delete'**
+  String get todo_confirm_delete_title;
+
+  /// Content of the delete confirmation dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete this todo item?'**
+  String get todo_confirm_delete_content;
+
+  /// Cancel button text
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// Delete button text
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get delete;
+
+  /// Edit button text
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get edit;
+
+  /// Add todo button text
+  ///
+  /// In en, this message translates to:
+  /// **'Add Todo'**
+  String get add_todo;
+
+  /// Label for start time
+  ///
+  /// In en, this message translates to:
+  /// **'Start Time'**
+  String get start_time;
+
+  /// Label for end time
+  ///
+  /// In en, this message translates to:
+  /// **'End Time'**
+  String get end_time;
+
+  /// Label for priority
+  ///
+  /// In en, this message translates to:
+  /// **'Priority'**
+  String get priority;
+
+  /// High priority
+  ///
+  /// In en, this message translates to:
+  /// **'High'**
+  String get high;
+
+  /// Medium priority
+  ///
+  /// In en, this message translates to:
+  /// **'Medium'**
+  String get medium;
+
+  /// Low priority
+  ///
+  /// In en, this message translates to:
+  /// **'Low'**
+  String get low;
+
+  /// Unknown priority
+  ///
+  /// In en, this message translates to:
+  /// **'Unknown'**
+  String get unknown;
+
+  /// Label for title field
+  ///
+  /// In en, this message translates to:
+  /// **'Title'**
+  String get title;
+
+  /// Label for content field
+  ///
+  /// In en, this message translates to:
+  /// **'Content'**
+  String get content;
+
+  /// Label for start date picker
+  ///
+  /// In en, this message translates to:
+  /// **'Select Start Date'**
+  String get select_start_date;
+
+  /// Label for end date picker
+  ///
+  /// In en, this message translates to:
+  /// **'Select End Date'**
+  String get select_end_date;
+
+  /// Confirm button text
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get confirm;
+
+  /// Save todo button text
+  ///
+  /// In en, this message translates to:
+  /// **'Save Todo'**
+  String get save_todo;
+
+  /// Update todo button text
+  ///
+  /// In en, this message translates to:
+  /// **'Update Todo'**
+  String get update_todo;
+
+  /// Error message when title is empty
+  ///
+  /// In en, this message translates to:
+  /// **'Title is required'**
+  String get todo_title_required;
+
+  /// Error message when end time is before start time
+  ///
+  /// In en, this message translates to:
+  /// **'End time must be after start time'**
+  String get todo_end_time_invalid;
+
+  /// Title for editing a todo item
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Todo'**
+  String get edit_todo;
+
+  /// Title of the breathing exercise app
+  ///
+  /// In en, this message translates to:
+  /// **'Breathing Exercise'**
+  String get breathing_app_title;
+
+  /// Title of the breathing exercise page
+  ///
+  /// In en, this message translates to:
+  /// **'Breathing Exercise'**
+  String get breathing_title;
+
+  /// Text when ready to start breathing exercise
+  ///
+  /// In en, this message translates to:
+  /// **'Ready to start'**
+  String get breathing_ready;
+
+  /// Initial instruction for breathing exercise
+  ///
+  /// In en, this message translates to:
+  /// **'Click start to begin 4-7-8 breathing exercise'**
+  String get breathing_instruction_start;
+
+  /// Title of the 4-7-8 breathing method
+  ///
+  /// In en, this message translates to:
+  /// **'4-7-8 Breathing Method'**
+  String get breathing_method_478;
+
+  /// Description of the 4-7-8 breathing method
+  ///
+  /// In en, this message translates to:
+  /// **'Inhale for 4 seconds, hold for 7 seconds, exhale for 8 seconds'**
+  String get breathing_method_description;
+
+  /// Benefits of the breathing method
+  ///
+  /// In en, this message translates to:
+  /// **'This method helps calm the nervous system and reduce anxiety'**
+  String get breathing_method_benefit;
+
+  /// Text for inhale phase
+  ///
+  /// In en, this message translates to:
+  /// **'Inhale'**
+  String get breathing_inhale;
+
+  /// Text for hold phase
+  ///
+  /// In en, this message translates to:
+  /// **'Hold'**
+  String get breathing_hold;
+
+  /// Text for exhale phase
+  ///
+  /// In en, this message translates to:
+  /// **'Exhale'**
+  String get breathing_exhale;
+
+  /// Instruction for inhale phase
+  ///
+  /// In en, this message translates to:
+  /// **'Slowly inhale through your nose... 4 seconds'**
+  String get breathing_instruction_inhale;
+
+  /// Instruction for hold phase with remaining seconds
+  ///
+  /// In en, this message translates to:
+  /// **'Hold your breath... {seconds} seconds'**
+  String breathing_instruction_hold(int seconds);
+
+  /// Instruction for exhale phase with remaining seconds
+  ///
+  /// In en, this message translates to:
+  /// **'Slowly exhale through your mouth... {seconds} seconds'**
+  String breathing_instruction_exhale(int seconds);
+
+  /// Text when exercise is paused
+  ///
+  /// In en, this message translates to:
+  /// **'Paused'**
+  String get breathing_paused;
+
+  /// Label for completed cycles count
+  ///
+  /// In en, this message translates to:
+  /// **'Completed cycles'**
+  String get breathing_completed_cycles;
+
+  /// Text for start exercise button
+  ///
+  /// In en, this message translates to:
+  /// **'Start Exercise'**
+  String get start_exercise;
+
+  /// Label for statistics section
+  ///
+  /// In en, this message translates to:
+  /// **'Statistics'**
+  String get stats;
+
+  /// Label for total seconds
+  ///
+  /// In en, this message translates to:
+  /// **'Total seconds'**
+  String get total_seconds;
+
+  /// Text for pause button
+  ///
+  /// In en, this message translates to:
+  /// **'Pause'**
+  String get pause;
+
+  /// Text for reset button
+  ///
+  /// In en, this message translates to:
+  /// **'Reset'**
+  String get reset;
+
+  /// No description provided for @todo_notify_before_hours.
+  ///
+  /// In en, this message translates to:
+  /// **'Remind in advance (hours)'**
+  String get todo_notify_before_hours;
+
+  /// No description provided for @todo_notify_before_minutes.
+  ///
+  /// In en, this message translates to:
+  /// **'Remind in advance (minutes)'**
+  String get todo_notify_before_minutes;
+
+  /// No description provided for @todo_notify_time_invalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Reminder time is invalid'**
+  String get todo_notify_time_invalid;
+
+  /// No description provided for @daily_sentences.
+  ///
+  /// In en, this message translates to:
+  /// **'daily sentences'**
+  String get daily_sentences;
+
+  /// Positive message 0
+  ///
+  /// In en, this message translates to:
+  /// **'Keep going — every small step counts!'**
+  String get tilt_card_message_0;
+
+  /// Positive message 1
+  ///
+  /// In en, this message translates to:
+  /// **'One day, one step. You\'ve got this.'**
+  String get tilt_card_message_1;
+
+  /// Positive message 2
+  ///
+  /// In en, this message translates to:
+  /// **'Make today meaningful — start now.'**
+  String get tilt_card_message_2;
+
+  /// Positive message 3
+  ///
+  /// In en, this message translates to:
+  /// **'Small progress is still progress.'**
+  String get tilt_card_message_3;
+
+  /// Positive message 4
+  ///
+  /// In en, this message translates to:
+  /// **'Breathe. Focus. Move forward.'**
+  String get tilt_card_message_4;
+
+  /// Positive message 5
+  ///
+  /// In en, this message translates to:
+  /// **'Your consistency builds your future.'**
+  String get tilt_card_message_5;
+
+  /// Positive message 6
+  ///
+  /// In en, this message translates to:
+  /// **'Little wins add up to big changes.'**
+  String get tilt_card_message_6;
+
+  /// Positive message 7
+  ///
+  /// In en, this message translates to:
+  /// **'Start where you are; use what you have.'**
+  String get tilt_card_message_7;
+
+  /// Positive message 8
+  ///
+  /// In en, this message translates to:
+  /// **'Progress, not perfection.'**
+  String get tilt_card_message_8;
+
+  /// Positive message 9
+  ///
+  /// In en, this message translates to:
+  /// **'Do it for the person you\'ll become.'**
+  String get tilt_card_message_9;
+
+  /// Positive message 10
+  ///
+  /// In en, this message translates to:
+  /// **'A calm mind creates clear action.'**
+  String get tilt_card_message_10;
+
+  /// Positive message 11
+  ///
+  /// In en, this message translates to:
+  /// **'Celebrate tiny victories today.'**
+  String get tilt_card_message_11;
+
+  /// Prompt shown on tilt card
+  ///
+  /// In en, this message translates to:
+  /// **'Touch and move around'**
+  String get tilt_touch_and_move;
+
+  /// Mood category: happy
+  ///
+  /// In en, this message translates to:
+  /// **'Happy'**
+  String get mood_category_happy;
+
+  /// Mood category: surprised
+  ///
+  /// In en, this message translates to:
+  /// **'Surprised'**
+  String get mood_category_surprised;
+
+  /// Mood category: funny / silly
+  ///
+  /// In en, this message translates to:
+  /// **'Funny'**
+  String get mood_category_funny;
+
+  /// Mood category: embarrassed
+  ///
+  /// In en, this message translates to:
+  /// **'Embarrassed'**
+  String get mood_category_embarrassed;
+
+  /// Mood category: sad
+  ///
+  /// In en, this message translates to:
+  /// **'Sad'**
+  String get mood_category_sad;
+
+  /// Mood category: shocked / astonished
+  ///
+  /// In en, this message translates to:
+  /// **'Shocked'**
+  String get mood_category_shocked;
+
+  /// Mood category: admire / impressed
+  ///
+  /// In en, this message translates to:
+  /// **'Admiring'**
+  String get mood_category_admire;
+
+  /// Mood category: angry
+  ///
+  /// In en, this message translates to:
+  /// **'Angry'**
+  String get mood_category_angry;
 }
 
 class _AppL10nDelegate extends LocalizationsDelegate<AppL10n> {

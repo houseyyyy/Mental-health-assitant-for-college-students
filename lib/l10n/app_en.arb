@@ -60,11 +60,15 @@
     "home_upgrade_title": "Upgrade",
     "home_upgrade_content": "Learn the latest\nusage scenarios",
     "home_upgrade_button": "Read",
-    "home_help_title": "Help",
-    "home_help_article_title_1": "Self-growth",
-    "home_help_article_content_1": "Cognitive and conscious processes produce attitudes towards external things...",
-    "home_help_article_title_2": "Emotion management",
-    "home_help_article_content_2": "How to better manage your emotions...",
+    "home_help_title": "Functions",
+    "home_help_article_title_1": "Psychological Assistant",
+    "home_help_article_content_1": "A ChatGPT that understands your mood...",
+    "home_help_article_title_2": "Pomodoro Timer",
+    "home_help_article_content_2": "Might be useful for focus...",
+    "home_help_article_title_3": "ToDo",
+    "home_help_article_content_3": "record and remind your deadline...",
+    "home_help_article_title_4": "Deep Breathing",
+    "home_help_article_content_4": "Take a deep breath and relax",
     
     "mood_title": "Mood",
     "mood_add_button": "Add",
@@ -115,5 +119,313 @@
     "local_notification_dialog_allow_cancel": "Cancel",
     "local_notification_dialog_allow_confirm": "Settings",
     "local_notification_schedule_title": "📅 Scheduling a Notification",
-    "local_notification_schedule_body": "Every 1 minute"
+    "local_notification_schedule_body": "Every 1 minute",
+
+
+    "ai_title": "Psychological assitant",
+    "ai_input_hint": "Type your question or message...",
+    "ai_stop_tooltip": "Stop",
+    "ai_sending_text": "AI is typing...",
+    "ai_apiKey_missing_title": "API Key missing",
+    "ai_apiKey_missing_message": "Please add DEEPSEEK_KEY=<your_key> to a .env file at project root and restart the app.",
+    "ai_ok": "OK",
+
+
+    "pomodoro_mode_work_title": "Work Mode",
+    "@pomodoro_mode_work_title": {
+      "description": "AppBar title when in work mode"
+    },
+    "pomodoro_mode_break_title": "Break Mode",
+    "@pomodoro_mode_break_title": {
+      "description": "AppBar title when in break mode"
+    },
+    "pomodoro_completed_label": "Completed Pomodoros",
+    "@pomodoro_completed_label": {
+      "description": "Label above the completed pomodoro indicators"
+    },
+    "pomodoro_snack_work_end": "Break time over — back to work!",
+    "@pomodoro_snack_work_end": {
+      "description": "Snackbar text when break ends and switching to work"
+    },
+    "pomodoro_snack_break_end": "Work time over — take a break!",
+    "@pomodoro_snack_break_end": {
+      "description": "Snackbar text when work ends and switching to break"
+    },
+    "pomodoro_reset_tooltip": "Reset",
+    "@pomodoro_reset_tooltip": {
+      "description": "Tooltip for reset button"
+    },
+    "pomodoro_toggle_tooltip": "Toggle mode",
+    "@pomodoro_toggle_tooltip": {
+      "description": "Tooltip for toggling between work and break"
+    },
+
+
+
+
+    "todo_app_title": "Todo Application",
+    "@todo_app_title": {
+      "description": "Title of the todo application"
+    },
+    "todo_list_title": "Todo List",
+    "@todo_list_title": {
+      "description": "Title of the todo list screen"
+    },
+    "todo_confirm_delete_title": "Confirm Delete",
+    "@todo_confirm_delete_title": {
+      "description": "Title of the delete confirmation dialog"
+    },
+    "todo_confirm_delete_content": "Are you sure you want to delete this todo item?",
+    "@todo_confirm_delete_content": {
+      "description": "Content of the delete confirmation dialog"
+    },
+    "cancel": "Cancel",
+    "@cancel": {
+      "description": "Cancel button text"
+    },
+    "delete": "Delete",
+    "@delete": {
+      "description": "Delete button text"
+    },
+    "edit": "Edit",
+    "@edit": {
+      "description": "Edit button text"
+    },
+    "add_todo": "Add Todo",
+    "@add_todo": {
+      "description": "Add todo button text"
+    },
+    "start_time": "Start Time",
+    "@start_time": {
+      "description": "Label for start time"
+    },
+    "end_time": "End Time",
+    "@end_time": {
+      "description": "Label for end time"
+    },
+    "priority": "Priority",
+    "@priority": {
+      "description": "Label for priority"
+    },
+    "high": "High",
+    "@high": {
+      "description": "High priority"
+    },
+    "medium": "Medium",
+    "@medium": {
+      "description": "Medium priority"
+    },
+    "low": "Low",
+    "@low": {
+      "description": "Low priority"
+    },
+    "unknown": "Unknown",
+    "@unknown": {
+      "description": "Unknown priority"
+    },
+    "title": "Title",
+    "@title": {
+      "description": "Label for title field"
+    },
+    "content": "Content",
+    "@content": {
+      "description": "Label for content field"
+    },
+    "select_start_date": "Select Start Date",
+    "@select_start_date": {
+      "description": "Label for start date picker"
+    },
+    "select_end_date": "Select End Date",
+    "@select_end_date": {
+      "description": "Label for end date picker"
+    },
+    "confirm": "Confirm",
+    "@confirm": {
+      "description": "Confirm button text"
+    },
+    "save_todo": "Save Todo",
+    "@save_todo": {
+      "description": "Save todo button text"
+    },
+    "update_todo": "Update Todo",
+    "@update_todo": {
+      "description": "Update todo button text"
+    },
+    "todo_title_required": "Title is required",
+    "@todo_title_required": {
+      "description": "Error message when title is empty"
+    },
+    "todo_end_time_invalid": "End time must be after start time",
+    "@todo_end_time_invalid": {
+      "description": "Error message when end time is before start time"
+    },
+    "edit_todo": "Edit Todo",
+    "@edit_todo": {
+      "description": "Title for editing a todo item"
+    },
+
+
+
+
+
+    "breathing_app_title": "Breathing Exercise",
+    "@breathing_app_title": {
+      "description": "Title of the breathing exercise app"
+    },
+    "breathing_title": "Breathing Exercise",
+    "@breathing_title": {
+      "description": "Title of the breathing exercise page"
+    },
+    "breathing_ready": "Ready to start",
+    "@breathing_ready": {
+      "description": "Text when ready to start breathing exercise"
+    },
+    "breathing_instruction_start": "Click start to begin 4-7-8 breathing exercise",
+    "@breathing_instruction_start": {
+      "description": "Initial instruction for breathing exercise"
+    },
+    "breathing_method_478": "4-7-8 Breathing Method",
+    "@breathing_method_478": {
+      "description": "Title of the 4-7-8 breathing method"
+    },
+    "breathing_method_description": "Inhale for 4 seconds, hold for 7 seconds, exhale for 8 seconds",
+    "@breathing_method_description": {
+      "description": "Description of the 4-7-8 breathing method"
+    },
+    "breathing_method_benefit": "This method helps calm the nervous system and reduce anxiety",
+    "@breathing_method_benefit": {
+      "description": "Benefits of the breathing method"
+    },
+    "breathing_inhale": "Inhale",
+    "@breathing_inhale": {
+      "description": "Text for inhale phase"
+    },
+    "breathing_hold": "Hold",
+    "@breathing_hold": {
+      "description": "Text for hold phase"
+    },
+    "breathing_exhale": "Exhale",
+    "@breathing_exhale": {
+      "description": "Text for exhale phase"
+    },
+    "breathing_instruction_inhale": "Slowly inhale through your nose... 4 seconds",
+    "@breathing_instruction_inhale": {
+      "description": "Instruction for inhale phase"
+    },
+    "breathing_instruction_hold": "Hold your breath... {seconds} seconds",
+    "@breathing_instruction_hold": {
+      "description": "Instruction for hold phase with remaining seconds",
+      "placeholders": {
+        "seconds": {
+          "type": "int"
+        }
+      }
+    },
+    "breathing_instruction_exhale": "Slowly exhale through your mouth... {seconds} seconds",
+    "@breathing_instruction_exhale": {
+      "description": "Instruction for exhale phase with remaining seconds",
+      "placeholders": {
+        "seconds": {
+          "type": "int"
+        }
+      }
+    },
+    "breathing_paused": "Paused",
+    "@breathing_paused": {
+      "description": "Text when exercise is paused"
+    },
+    "breathing_completed_cycles": "Completed cycles",
+    "@breathing_completed_cycles": {
+      "description": "Label for completed cycles count"
+    },
+    "start_exercise": "Start Exercise",
+    "@start_exercise": {
+      "description": "Text for start exercise button"
+    },
+    "stats": "Statistics",
+    "@stats": {
+      "description": "Label for statistics section"
+    },
+    "total_seconds": "Total seconds",
+    "@total_seconds": {
+      "description": "Label for total seconds"
+    },
+    "pause": "Pause",
+    "@pause": {
+      "description": "Text for pause button"
+    },
+    "reset": "Reset",
+    "@reset": {
+      "description": "Text for reset button"
+    },
+
+    "todo_notify_before_hours":"Remind in advance (hours)",
+    "todo_notify_before_minutes":"Remind in advance (minutes)",
+    "todo_notify_time_invalid":"Reminder time is invalid",
+
+    "daily_sentences":"daily sentences",
+    
+    "tilt_card_message_0": "Keep going — every small step counts!",
+    "@tilt_card_message_0": { "description": "Positive message 0" },
+  
+    "tilt_card_message_1": "One day, one step. You've got this.",
+    "@tilt_card_message_1": { "description": "Positive message 1" },
+  
+    "tilt_card_message_2": "Make today meaningful — start now.",
+    "@tilt_card_message_2": { "description": "Positive message 2" },
+  
+    "tilt_card_message_3": "Small progress is still progress.",
+    "@tilt_card_message_3": { "description": "Positive message 3" },
+  
+    "tilt_card_message_4": "Breathe. Focus. Move forward.",
+    "@tilt_card_message_4": { "description": "Positive message 4" },
+  
+    "tilt_card_message_5": "Your consistency builds your future.",
+    "@tilt_card_message_5": { "description": "Positive message 5" },
+  
+    "tilt_card_message_6": "Little wins add up to big changes.",
+    "@tilt_card_message_6": { "description": "Positive message 6" },
+  
+    "tilt_card_message_7": "Start where you are; use what you have.",
+    "@tilt_card_message_7": { "description": "Positive message 7" },
+  
+    "tilt_card_message_8": "Progress, not perfection.",
+    "@tilt_card_message_8": { "description": "Positive message 8" },
+  
+    "tilt_card_message_9": "Do it for the person you'll become.",
+    "@tilt_card_message_9": { "description": "Positive message 9" },
+  
+    "tilt_card_message_10": "A calm mind creates clear action.",
+    "@tilt_card_message_10": { "description": "Positive message 10" },
+  
+    "tilt_card_message_11": "Celebrate tiny victories today.",
+    "@tilt_card_message_11": { "description": "Positive message 11" },
+    "tilt_touch_and_move": "Touch and move around",
+    "@tilt_touch_and_move": { "description": "Prompt shown on tilt card" },
+
+
+    "mood_category_happy": "Happy",
+    "@mood_category_happy": { "description": "Mood category: happy" },
+  
+    "mood_category_surprised": "Surprised",
+    "@mood_category_surprised": { "description": "Mood category: surprised" },
+  
+    "mood_category_funny": "Funny",
+    "@mood_category_funny": { "description": "Mood category: funny / silly" },
+  
+    "mood_category_embarrassed": "Embarrassed",
+    "@mood_category_embarrassed": { "description": "Mood category: embarrassed" },
+  
+    "mood_category_sad": "Sad",
+    "@mood_category_sad": { "description": "Mood category: sad" },
+  
+    "mood_category_shocked": "Shocked",
+    "@mood_category_shocked": { "description": "Mood category: shocked / astonished" },
+  
+    "mood_category_admire": "Admiring",
+    "@mood_category_admire": { "description": "Mood category: admire / impressed" },
+  
+    "mood_category_angry": "Angry",
+    "@mood_category_angry": { "description": "Mood category: angry" }
+    
 }    

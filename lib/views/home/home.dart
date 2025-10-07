@@ -96,7 +96,7 @@ class HomeBody extends StatelessWidget {
                   child: MergeSemantics(child: NoticeCard()),
                 ),
 
-                /// 相关文章
+                /// 相关文章（改为左右滑动卡片）
                 Padding(
                   padding: const EdgeInsets.all(24),
                   child: Column(
@@ -112,7 +112,8 @@ class HomeBody extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const Article(),
+                      // 使用新的滑动卡片组件替代原来的Article
+                      const SwipeableArticleCards(),
                     ],
                   ),
                 ),
@@ -163,6 +164,18 @@ class MoodOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppL10n.of(context);
+    final Map<String, String> localizedTitles = {
+      'happy': l10n.mood_category_happy,
+      'surprised': l10n.mood_category_surprised,
+      'funny': l10n.mood_category_funny,
+      'awkward': l10n.mood_category_embarrassed,
+      'sad': l10n.mood_category_sad,
+      'shocked': l10n.mood_category_shocked,
+      'admiring': l10n.mood_category_admire,
+      'angry': l10n.mood_category_angry,
+    };
+
     return SingleChildScrollView(
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
       scrollDirection: Axis.horizontal,
@@ -177,13 +190,14 @@ class MoodOption extends StatelessWidget {
           /// 所有心情类型数据
           final widgetList = <Widget>[];
           for (final list in data.moodCategoryAll) {
-            widgetList.add(OptionCard(title: list.title, icon: list.icon));
+            final localizedTitle = localizedTitles[list.title] ?? list.title;
+            widgetList.add(OptionCard(title: localizedTitle, icon: list.icon));
           }
 
           return Wrap(
             spacing: 24,
             alignment: WrapAlignment.spaceBetween,
-            children: widgetList, // dart format
+            children: widgetList,
           );
         },
       ),
@@ -390,170 +404,255 @@ class NoticeMainCard extends StatelessWidget {
   }
 }
 
-/// 相关文章
-class Article extends StatelessWidget {
-  const Article({super.key});
+// ==========================================
+// 新增：支持左右滑动的文章卡片组件（固定卡片高度，图片允许上下左右溢出且不被裁剪）
+// ==========================================
+
+class SwipeableArticleCards extends StatefulWidget {
+  const SwipeableArticleCards({super.key});
+
+  @override
+  State<SwipeableArticleCards> createState() => _SwipeableArticleCardsState();
+}
+
+class _SwipeableArticleCardsState extends State<SwipeableArticleCards> {
+  late final PageController _pageController;
+  int _currentIndex = 0;
+
+  // 固定卡片高度
+  static const double cardHeight = 260.0;
+
+  // 允许图片在上下方向溢出可见的额外空间（PageView 总高度 = cardHeight + verticalOverflowAllowance）
+  static const double verticalOverflowAllowance = 80.0;
+  double get pageViewHeight => cardHeight + verticalOverflowAllowance;
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController(viewportFraction: 0.85);
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     final appL10n = AppL10n.of(context);
+    final screenWidth = MediaQuery.of(context).size.width;
+    final cardWidth = screenWidth * 0.8;
 
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final availableWidth = constraints.maxWidth;
-        const minWidth = 120.0;
-        const maxWidth = 200.0;
-        final widgetWidth = (availableWidth / 2 - 8).clamp(minWidth, maxWidth);
-
-        return Wrap(
-          spacing: 16,
-          runSpacing: 24,
-          crossAxisAlignment: WrapCrossAlignment.end,
-          children: [
-            ArticleCard(
-              key: const Key('widget_home_article_1'),
-              width: widgetWidth,
-              gradient: const LinearGradient(
-                begin: Alignment.bottomLeft,
-                end: Alignment.topRight,
-                colors: [Color(0xFFFFCEBD), Color(0xFFFFCEBD), Color(0xFFFFDCCF)],
-              ),
-              onTap: () {
-                GoRouter.of(context).pushNamed(
-                  Routes.webViewPage,
-                  pathParameters: {
-                    'url': ValueBase64('https://github.com/AmosHuKe/Mood-Example').encode(),
-                  },
-                );
-              },
-              children: [
-                Stack(
-                  clipBehavior: Clip.none,
-                  alignment: Alignment.bottomCenter,
-                  children: [
-                    /// 图片或装饰
-                    Positioned(
-                      bottom: -12,
-                      left: 0,
-                      child: Image.asset(
-                        'assets/images/onboarding/onboarding_2.png',
-                        fit: BoxFit.contain,
-                        height: 120,
-                      ),
-                    ),
-
-                    /// 文字和按钮
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          appL10n.home_help_article_title_1,
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w900,
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 6),
-                          child: Text(
-                            appL10n.home_help_article_content_1,
-                            style: const TextStyle(color: Colors.black87, fontSize: 14),
-                          ),
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.only(top: 4),
-                          child: Icon(
-                            Remix.arrow_right_circle_fill,
-                            size: 24,
-                            color: Colors.black87,
-                          ),
-                        ),
-                        const SizedBox(height: 100),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            ),
-
-            ArticleCard(
-              key: const Key('widget_home_article_2'),
-              width: widgetWidth,
-              mainAxisAlignment: MainAxisAlignment.end,
-              gradient: const LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [Color(0xFFFFD390), Color(0xFFFFD390), Color(0xFFFFE1B3)],
-              ),
-              onTap: () {
-                GoRouter.of(context).pushNamed(
-                  Routes.webViewPage,
-                  pathParameters: {'url': ValueBase64('https://amooos.com/').encode()},
-                );
-              },
-              children: [
-                Stack(
-                  clipBehavior: Clip.none,
-                  alignment: Alignment.topCenter,
-                  children: [
-                    /// 图片或装饰
-                    Positioned(
-                      top: -64,
-                      left: 0,
-                      child: Image.asset(
-                        'assets/images/onboarding/onboarding_1.png',
-                        fit: BoxFit.contain,
-                        height: 120,
-                      ),
-                    ),
-
-                    /// 文字和按钮
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const SizedBox(height: 72),
-                        Text(
-                          appL10n.home_help_article_title_2,
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w900,
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 6),
-                          child: Text(
-                            appL10n.home_help_article_content_2,
-                            style: const TextStyle(color: Colors.black87, fontSize: 14),
-                          ),
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.only(top: 4),
-                          child: Icon(
-                            Remix.arrow_right_circle_fill,
-                            size: 24,
-                            color: Colors.black87,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ],
-        );
+    // 每篇文章指定 image 的目标位置（使用 top/right/left/bottom，可以为负值）
+    // imageScale 表示图片高度 = cardHeight * imageScale（你可以调节这个值）
+    final articles = [
+      {
+        'gradient': const LinearGradient(
+          begin: Alignment.bottomLeft,
+          end: Alignment.topRight,
+          colors: [Color(0xFFFFCEBD), Color(0xFFFFCEBD), Color(0xFFFFDCCF)],
+        ),
+        'title': appL10n.home_help_article_title_1,
+        'content': appL10n.home_help_article_content_1,
+        'image': 'assets/images/onboarding/onboarding_2.png',
+        // 把图片放到右上角，稍微溢出（top: -20, right: -20）
+        'imageTop': 80.0,
+        'imageRight': 0.0,
+        'imageScale': 0.65,
+        'paddingTop': 0.0,
+        'paddingBottom': 100.0,
+        'onTap': () {
+          GoRouter.of(context).pushNamed(Routes.aiScreen);
+        }
       },
+      {
+        'gradient': const LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [Color(0xFFFFD390), Color(0xFFFFD390), Color(0xFFFFE1B3)],
+        ),
+        'title': appL10n.home_help_article_title_2,
+        'content': appL10n.home_help_article_content_2,
+        'image': 'assets/images/onboarding/tomatoes.png',
+        // 西红柿也放到右上角，但位置不同（更靠内侧），你可以微调
+        'imageTop': 0.0,
+        'imageRight': 0.0,
+        'imageScale': 0.58,
+        'paddingTop': 110.0,
+        'paddingBottom': 0.0,
+        'onTap': () {
+          GoRouter.of(context).pushNamed(Routes.pomodoro_clock);
+        }
+      },
+      {
+        'gradient': const LinearGradient(
+          begin: Alignment.bottomLeft,
+          end: Alignment.topRight,
+          colors: [Color(0xFFBDE0FE), Color(0xFFBDE0FE), Color(0xFFDBEAFE)],
+        ),
+        'title': appL10n.home_help_article_title_3,
+        'content': appL10n.home_help_article_content_3,
+        'image': 'assets/images/onboarding/list.png',
+        // 列表图放右下角，稍微溢出底部
+        'imageBottom': 0.0,
+        'imageRight': 0.0,
+        'imageScale': 0.62,
+        'paddingTop': 20.0,
+        'paddingBottom': 90.0,
+        'onTap': () {
+          GoRouter.of(context).pushNamed(Routes.todolist);
+        }
+      },
+      {
+        'gradient': const LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [Color(0xFFB7F8DB), Color(0xFFB7F8DB), Color(0xFFCCFBF1)],
+        ),
+        'title': appL10n.home_help_article_title_4,
+        'content': appL10n.home_help_article_content_4,
+        'image': 'assets/images/onboarding/breath.png',
+        // 放右上、但更靠内侧
+        'imageTop': 0.0,
+        'imageRight': -10.0,
+        'imageScale': 0.55,
+        'paddingTop': 100.0,
+        'paddingBottom': 10.0,
+        'onTap': () {
+          GoRouter.of(context).pushNamed(Routes.breath);
+        }
+      },
+    ];
+
+    return Column(
+      children: [
+        SizedBox(
+          height: pageViewHeight,
+          child: PageView.builder(
+            controller: _pageController,
+            physics: const BouncingScrollPhysics(),
+            itemCount: articles.length,
+            onPageChanged: (index) {
+              setState(() {
+                _currentIndex = index;
+              });
+            },
+            itemBuilder: (context, index) {
+              final article = articles[index];
+
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Center(
+                  child: SizedBox(
+                    width: cardWidth,
+                    height: cardHeight,
+                    child: ArticleCard(
+                      width: cardWidth,
+                      height: cardHeight,
+                      gradient: article['gradient'] as Gradient,
+                      onTap: article['onTap'] as VoidCallback?,
+                      children: [
+                        // 核心：使用 Positioned 放置图片，便于精确控制 top/right/left/bottom（可为负）
+                        Stack(
+                          clipBehavior: Clip.none,
+                          children: [
+                            // 图片（放在最底层）
+                            Positioned(
+                              top: article.containsKey('imageTop') ? (article['imageTop'] as double) : null,
+                              bottom: article.containsKey('imageBottom') ? (article['imageBottom'] as double) : null,
+                              left: article.containsKey('imageLeft') ? (article['imageLeft'] as double) : null,
+                              right: article.containsKey('imageRight') ? (article['imageRight'] as double) : null,
+                              child: Image.asset(
+                                article['image'] as String,
+                                // 图片高度基于卡片高度与 imageScale（比例）
+                                height: cardHeight * (article['imageScale'] as double),
+                                fit: BoxFit.fitHeight, // 纵向填满所设置的高度
+                              ),
+                            ),
+
+                            // 前景文字（放在卡片内部，使用 Positioned.fill + Padding）
+                            Positioned.fill(
+                              child: Padding(
+                                padding: const EdgeInsets.all(24.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    SizedBox(height: article['paddingTop'] as double),
+                                    Text(
+                                      article['title'] as String,
+                                      style: const TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w900,
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(vertical: 6),
+                                      child: Text(
+                                        article['content'] as String,
+                                        style: const TextStyle(
+                                          color: Colors.black87,
+                                          fontSize: 14,
+                                        ),
+                                      ),
+                                    ),
+                                    const Padding(
+                                      padding: EdgeInsets.only(top: 4),
+                                      child: Icon(
+                                        Remix.arrow_right_circle_fill,
+                                        size: 24,
+                                        color: Colors.black87,
+                                      ),
+                                    ),
+                                    SizedBox(height: article['paddingBottom'] as double),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
+
+        // 指示器
+        Padding(
+          padding: const EdgeInsets.only(top: 16),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: List.generate(articles.length, (i) {
+              return AnimatedContainer(
+                duration: const Duration(milliseconds: 250),
+                margin: const EdgeInsets.symmetric(horizontal: 4),
+                width: _currentIndex == i ? 24 : 8,
+                height: 8,
+                decoration: BoxDecoration(
+                  color: _currentIndex == i
+                      ? Theme.of(context).primaryColor
+                      : Colors.grey.withOpacity(0.3),
+                  borderRadius: BorderRadius.circular(4),
+                ),
+              );
+            }),
+          ),
+        ),
+      ],
     );
   }
 }
 
-/// 文章卡片
+/// 文章卡片 (固定高度，内部用 Stack + Positioned.fill 限制 Column 尺寸)
 class ArticleCard extends StatelessWidget {
   const ArticleCard({
     super.key,
     required this.width,
+    required this.height,
     required this.gradient,
     this.crossAxisAlignment = CrossAxisAlignment.start,
     this.mainAxisAlignment = MainAxisAlignment.start,
@@ -562,6 +661,7 @@ class ArticleCard extends StatelessWidget {
   });
 
   final double width;
+  final double height;
   final Gradient gradient;
   final MainAxisAlignment mainAxisAlignment;
   final CrossAxisAlignment crossAxisAlignment;
@@ -576,12 +676,25 @@ class ArticleCard extends StatelessWidget {
         onTap: onTap,
         child: Container(
           width: width,
-          padding: const EdgeInsets.all(14),
-          decoration: BoxDecoration(gradient: gradient, borderRadius: BorderRadius.circular(18)),
-          child: Column(
-            mainAxisAlignment: mainAxisAlignment,
-            crossAxisAlignment: crossAxisAlignment,
-            children: children,
+          height: height,
+          decoration: BoxDecoration(
+            gradient: gradient,
+            borderRadius: BorderRadius.circular(24),
+          ),
+          child: Stack(
+            clipBehavior: Clip.none,
+            children: [
+              // 卡片内部内容（children 通常是一个 Stack：图片 + 文本）
+              Positioned.fill(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(24),
+                  child: Stack(
+                    clipBehavior: Clip.none,
+                    children: children,
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),

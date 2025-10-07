@@ -164,20 +164,31 @@ class AppL10nEn extends AppL10n {
   String get home_upgrade_button => 'Read';
 
   @override
-  String get home_help_title => 'Help';
+  String get home_help_title => 'Functions';
 
   @override
-  String get home_help_article_title_1 => 'Self-growth';
+  String get home_help_article_title_1 => 'Psychological Assistant';
 
   @override
-  String get home_help_article_content_1 =>
-      'Cognitive and conscious processes produce attitudes towards external things...';
+  String get home_help_article_content_1 => 'A ChatGPT that understands your mood...';
 
   @override
-  String get home_help_article_title_2 => 'Emotion management';
+  String get home_help_article_title_2 => 'Pomodoro Timer';
 
   @override
-  String get home_help_article_content_2 => 'How to better manage your emotions...';
+  String get home_help_article_content_2 => 'Might be useful for focus...';
+
+  @override
+  String get home_help_article_title_3 => 'ToDo';
+
+  @override
+  String get home_help_article_content_3 => 'record and remind your deadline...';
+
+  @override
+  String get home_help_article_title_4 => 'Deep Breathing';
+
+  @override
+  String get home_help_article_content_4 => 'Take a deep breath and relax';
 
   @override
   String get mood_title => 'Mood';
@@ -316,4 +327,263 @@ class AppL10nEn extends AppL10n {
 
   @override
   String get local_notification_schedule_body => 'Every 1 minute';
+
+  @override
+  String get ai_title => 'Psychological assitant';
+
+  @override
+  String get ai_input_hint => 'Type your question or message...';
+
+  @override
+  String get ai_stop_tooltip => 'Stop';
+
+  @override
+  String get ai_sending_text => 'AI is typing...';
+
+  @override
+  String get ai_apiKey_missing_title => 'API Key missing';
+
+  @override
+  String get ai_apiKey_missing_message =>
+      'Please add DEEPSEEK_KEY=<your_key> to a .env file at project root and restart the app.';
+
+  @override
+  String get ai_ok => 'OK';
+
+  @override
+  String get pomodoro_mode_work_title => 'Work Mode';
+
+  @override
+  String get pomodoro_mode_break_title => 'Break Mode';
+
+  @override
+  String get pomodoro_completed_label => 'Completed Pomodoros';
+
+  @override
+  String get pomodoro_snack_work_end => 'Break time over — back to work!';
+
+  @override
+  String get pomodoro_snack_break_end => 'Work time over — take a break!';
+
+  @override
+  String get pomodoro_reset_tooltip => 'Reset';
+
+  @override
+  String get pomodoro_toggle_tooltip => 'Toggle mode';
+
+  @override
+  String get todo_app_title => 'Todo Application';
+
+  @override
+  String get todo_list_title => 'Todo List';
+
+  @override
+  String get todo_confirm_delete_title => 'Confirm Delete';
+
+  @override
+  String get todo_confirm_delete_content => 'Are you sure you want to delete this todo item?';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get delete => 'Delete';
+
+  @override
+  String get edit => 'Edit';
+
+  @override
+  String get add_todo => 'Add Todo';
+
+  @override
+  String get start_time => 'Start Time';
+
+  @override
+  String get end_time => 'End Time';
+
+  @override
+  String get priority => 'Priority';
+
+  @override
+  String get high => 'High';
+
+  @override
+  String get medium => 'Medium';
+
+  @override
+  String get low => 'Low';
+
+  @override
+  String get unknown => 'Unknown';
+
+  @override
+  String get title => 'Title';
+
+  @override
+  String get content => 'Content';
+
+  @override
+  String get select_start_date => 'Select Start Date';
+
+  @override
+  String get select_end_date => 'Select End Date';
+
+  @override
+  String get confirm => 'Confirm';
+
+  @override
+  String get save_todo => 'Save Todo';
+
+  @override
+  String get update_todo => 'Update Todo';
+
+  @override
+  String get todo_title_required => 'Title is required';
+
+  @override
+  String get todo_end_time_invalid => 'End time must be after start time';
+
+  @override
+  String get edit_todo => 'Edit Todo';
+
+  @override
+  String get breathing_app_title => 'Breathing Exercise';
+
+  @override
+  String get breathing_title => 'Breathing Exercise';
+
+  @override
+  String get breathing_ready => 'Ready to start';
+
+  @override
+  String get breathing_instruction_start => 'Click start to begin 4-7-8 breathing exercise';
+
+  @override
+  String get breathing_method_478 => '4-7-8 Breathing Method';
+
+  @override
+  String get breathing_method_description =>
+      'Inhale for 4 seconds, hold for 7 seconds, exhale for 8 seconds';
+
+  @override
+  String get breathing_method_benefit =>
+      'This method helps calm the nervous system and reduce anxiety';
+
+  @override
+  String get breathing_inhale => 'Inhale';
+
+  @override
+  String get breathing_hold => 'Hold';
+
+  @override
+  String get breathing_exhale => 'Exhale';
+
+  @override
+  String get breathing_instruction_inhale => 'Slowly inhale through your nose... 4 seconds';
+
+  @override
+  String breathing_instruction_hold(int seconds) {
+    return 'Hold your breath... $seconds seconds';
+  }
+
+  @override
+  String breathing_instruction_exhale(int seconds) {
+    return 'Slowly exhale through your mouth... $seconds seconds';
+  }
+
+  @override
+  String get breathing_paused => 'Paused';
+
+  @override
+  String get breathing_completed_cycles => 'Completed cycles';
+
+  @override
+  String get start_exercise => 'Start Exercise';
+
+  @override
+  String get stats => 'Statistics';
+
+  @override
+  String get total_seconds => 'Total seconds';
+
+  @override
+  String get pause => 'Pause';
+
+  @override
+  String get reset => 'Reset';
+
+  @override
+  String get todo_notify_before_hours => 'Remind in advance (hours)';
+
+  @override
+  String get todo_notify_before_minutes => 'Remind in advance (minutes)';
+
+  @override
+  String get todo_notify_time_invalid => 'Reminder time is invalid';
+
+  @override
+  String get daily_sentences => 'daily sentences';
+
+  @override
+  String get tilt_card_message_0 => 'Keep going — every small step counts!';
+
+  @override
+  String get tilt_card_message_1 => 'One day, one step. You\'ve got this.';
+
+  @override
+  String get tilt_card_message_2 => 'Make today meaningful — start now.';
+
+  @override
+  String get tilt_card_message_3 => 'Small progress is still progress.';
+
+  @override
+  String get tilt_card_message_4 => 'Breathe. Focus. Move forward.';
+
+  @override
+  String get tilt_card_message_5 => 'Your consistency builds your future.';
+
+  @override
+  String get tilt_card_message_6 => 'Little wins add up to big changes.';
+
+  @override
+  String get tilt_card_message_7 => 'Start where you are; use what you have.';
+
+  @override
+  String get tilt_card_message_8 => 'Progress, not perfection.';
+
+  @override
+  String get tilt_card_message_9 => 'Do it for the person you\'ll become.';
+
+  @override
+  String get tilt_card_message_10 => 'A calm mind creates clear action.';
+
+  @override
+  String get tilt_card_message_11 => 'Celebrate tiny victories today.';
+
+  @override
+  String get tilt_touch_and_move => 'Touch and move around';
+
+  @override
+  String get mood_category_happy => 'Happy';
+
+  @override
+  String get mood_category_surprised => 'Surprised';
+
+  @override
+  String get mood_category_funny => 'Funny';
+
+  @override
+  String get mood_category_embarrassed => 'Embarrassed';
+
+  @override
+  String get mood_category_sad => 'Sad';
+
+  @override
+  String get mood_category_shocked => 'Shocked';
+
+  @override
+  String get mood_category_admire => 'Admiring';
+
+  @override
+  String get mood_category_angry => 'Angry';
 }
