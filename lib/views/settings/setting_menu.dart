@@ -182,7 +182,7 @@ class Menu extends StatelessWidget {
           onTap: () {
             print('关于');
             final url = ValueBase64(
-              'https://github.com/AmosHuKe/Mood-Example',
+              'https://github.com/houseyyyy/Mental-health-assitant-for-college-students',
             ).encode();
             GoRouter.of(
               context,
